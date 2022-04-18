@@ -1,34 +1,32 @@
 ### HEXMate logfile and output summary ###
 
 ### Command-line arguments ###
- dist/default/production\Lider_Cv1.0.production.hex
- -Odist/default/production\Lider_Cv1.0.production.hex
- -logfile=dist/default/production\Lider_Cv1.0.production.hxl
+ dist/default/debug\Lider_Cv1.0.debug.hex
+ -Odist/default/debug\Lider_Cv1.0.debug.hex
+ -logfile=dist/default/debug\Lider_Cv1.0.debug.hxl
  -addressing=2
 
 ### Memory Usage ###
  Intel Hex-file ranges:
-  0h - 5h		(dist/default/production\Lider_Cv1.0.production.hex)
-  F14h - FFFh		(dist/default/production\Lider_Cv1.0.production.hex)
-  4000h - 4007h		(dist/default/production\Lider_Cv1.0.production.hex)
-  400Eh - 4011h		(dist/default/production\Lider_Cv1.0.production.hex)
+  0h - 5h		(dist/default/debug\Lider_Cv1.0.debug.hex)
+  F34h - FFFh		(dist/default/debug\Lider_Cv1.0.debug.hex)
+  4000h - 4007h		(dist/default/debug\Lider_Cv1.0.debug.hex)
+  400Eh - 4011h		(dist/default/debug\Lider_Cv1.0.debug.hex)
  Unused ranges:
-  6h - F13h
+  6h - F33h
   1000h - 3FFFh
   4008h - 400Dh
 
 ### Hex Memory Map ###
  Legend:
   -- = Unused memory
-  H1 = Intel Hex-file         (dist/default/production\Lider_Cv1.0.production.hex)
+  H1 = Intel Hex-file         (dist/default/debug\Lider_Cv1.0.debug.hex)
 ----------------------------------------------------------
          | 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
 ----------------------------------------------------------
 00000000 | H1 H1 H1 H1 H1 H1 -- -- -- -- -- -- -- -- -- --
 ----------------------------------------------------------
-00000F10 | -- -- -- -- H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-00000F20 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-00000F30 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00000F30 | -- -- -- -- H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00000F40 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00000F50 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00000F60 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1

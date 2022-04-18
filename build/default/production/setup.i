@@ -1,4 +1,4 @@
-# 1 "main.c"
+# 1 "setup.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,29 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "main.c" 2
-
-
-
-
-#pragma config FOSC = INTRC_NOCLKOUT
-#pragma config WDTE = OFF
-#pragma config PWRTE = ON
-#pragma config MCLRE = ON
-#pragma config CP = OFF
-#pragma config CPD = OFF
-#pragma config BOREN = OFF
-#pragma config IESO = OFF
-#pragma config FCMEN = ON
-#pragma config LVP = OFF
-
-
-#pragma config BOR4V = BOR40V
-#pragma config WRT = OFF
-
-
-
-
+# 1 "setup.c" 2
 
 # 1 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\xc.h" 3
@@ -2527,67 +2505,30 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 29 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\xc.h" 2 3
-# 23 "main.c" 2
+# 2 "setup.c" 2
 
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c90\\stdbool.h" 1 3
-# 24 "main.c" 2
 
-# 1 "./prototipos.h" 1
+void setup(void) {
 
 
 
 
+#pragma config FOSC = INTRC_NOCLKOUT
+#pragma config WDTE = OFF
+#pragma config PWRTE = ON
+#pragma config MCLRE = ON
+#pragma config CP = OFF
+#pragma config CPD = OFF
+#pragma config BOREN = OFF
+#pragma config IESO = OFF
+#pragma config FCMEN = ON
+#pragma config LVP = OFF
+
+
+#pragma config BOR4V = BOR40V
+#pragma config WRT = OFF
 
 
 
 
-void motor(void);
-void setup(void);
-# 25 "main.c" 2
-
-
-
-void main(void) {
-    int8_t LED = 1;
-    TRISC = 0b11110000;
-    TRISB = 0x00;
-
-    uint16_t Encoder1 = 0;
-    uint16_t Encoder2 = 0;
-
-
-    _Bool A_old;
-
-    PORTB = PORTB | LED;
-    motor();
-    for(;;){
-
-
-
-
-    do{
-
-
-
-
-
-    if ((A_old != PORTCbits.RC4) & (PORTCbits.RC4 == 1)){
-        Encoder1++;}
-    A_old = PORTCbits.RC4;
-
-    if(Encoder1 == 100)
-         PORTB = PORTB & ~LED;
-
-    if(Encoder1 == 1050)
-        PORTB = PORTB | LED;
-
-    if(Encoder1 == 1150)
-        PORTB = PORTB & ~LED;
-
-    }while(Encoder1 != 2100);
-    PORTB = PORTB | LED;
-    Encoder1 = 0;
-    }
-
-    return;
 }

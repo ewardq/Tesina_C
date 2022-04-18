@@ -1,52 +1,4 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[p mainexit ]
-"1462 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f886.h
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f886.h: 1462: extern volatile unsigned char TRISC __attribute__((address(0x087)));
-[v _TRISC `Vuc ~T0 @X0 0 e@135 ]
-"1400
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f886.h: 1400: extern volatile unsigned char TRISB __attribute__((address(0x086)));
-[v _TRISB `Vuc ~T0 @X0 0 e@134 ]
-"229
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f886.h: 229: extern volatile unsigned char PORTB __attribute__((address(0x006)));
-[v _PORTB `Vuc ~T0 @X0 0 e@6 ]
-"9 ./prototipos.h
-[; ;./prototipos.h: 9: void motor(void);
-[v _motor `(v ~T0 @X0 0 ef ]
-"297 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f886.h
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f886.h: 297:     struct {
-[s S10 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S10 . RC0 RC1 RC2 RC3 RC4 RC5 RC6 RC7 ]
-"296
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f886.h: 296: typedef union {
-[u S9 `S10 1 ]
-[n S9 . . ]
-"308
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f886.h: 308: extern volatile PORTCbits_t PORTCbits __attribute__((address(0x007)));
-[v _PORTCbits `VS9 ~T0 @X0 0 e@7 ]
-"5 main.c
-[p x FOSC  =  INTRC_NOCLKOUT ]
-"6
-[p x WDTE  =  OFF        ]
-"7
-[p x PWRTE  =  ON        ]
-"8
-[p x MCLRE  =  ON        ]
-"9
-[p x CP  =  OFF          ]
-"10
-[p x CPD  =  OFF         ]
-"11
-[p x BOREN  =  OFF       ]
-"12
-[p x IESO  =  OFF        ]
-"13
-[p x FCMEN  =  ON        ]
-"14
-[p x LVP  =  OFF         ]
-"17
-[p x BOR4V  =  BOR40V    ]
-"18
-[p x WRT  =  OFF         ]
 "55 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f886.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f886.h: 55: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -275,103 +227,36 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3371
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f886.h: 3371: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-[v $root$_main `(v ~T0 @X0 0 e ]
-"28 main.c
-[; ;main.c: 28: void main(void) {
-[v _main `(v ~T0 @X0 1 ef ]
+"4 setup.c
+[; ;setup.c: 4: void setup(void) {
+[v _setup `(v ~T0 @X0 1 ef ]
 {
-[e :U _main ]
+[e :U _setup ]
 [f ]
-"29
-[; ;main.c: 29:     int8_t LED = 1;
-[v _LED `c ~T0 @X0 1 a ]
-[e = _LED -> -> 1 `i `c ]
-"30
-[; ;main.c: 30:     TRISC = 0b11110000;
-[e = _TRISC -> -> 240 `i `uc ]
-"31
-[; ;main.c: 31:     TRISB = 0x00;
-[e = _TRISB -> -> 0 `i `uc ]
-"33
-[; ;main.c: 33:     uint16_t Encoder1 = 0;
-[v _Encoder1 `ui ~T0 @X0 1 a ]
-[e = _Encoder1 -> -> 0 `i `ui ]
-"34
-[; ;main.c: 34:     uint16_t Encoder2 = 0;
-[v _Encoder2 `ui ~T0 @X0 1 a ]
-[e = _Encoder2 -> -> 0 `i `ui ]
-"37
-[; ;main.c: 37:     _Bool A_old;
-[v _A_old `a ~T0 @X0 1 a ]
-"39
-[; ;main.c: 39:     PORTB = PORTB | LED;
-[e = _PORTB -> | -> _PORTB `i -> _LED `i `uc ]
-"40
-[; ;main.c: 40:     motor();
-[e ( _motor ..  ]
-"41
-[; ;main.c: 41:     for(;;){
-{
-[e :U 135 ]
-{
-"46
-[; ;main.c: 46:     do{
-[e :U 140 ]
-{
-"52
-[; ;main.c: 52:     if ((A_old != PORTCbits.RC4) & (PORTCbits.RC4 == 1)){
-[e $ ! & != -> _A_old `i -> . . _PORTCbits 0 4 `i == -> . . _PORTCbits 0 4 `i -> 1 `i 141  ]
-{
-"53
-[; ;main.c: 53:         Encoder1++;}
-[e ++ _Encoder1 -> -> 1 `i `ui ]
-}
-[e :U 141 ]
-"54
-[; ;main.c: 54:     A_old = PORTCbits.RC4;
-[e = _A_old -> . . _PORTCbits 0 4 `a ]
-"56
-[; ;main.c: 56:     if(Encoder1 == 100)
-[e $ ! == _Encoder1 -> -> 100 `i `ui 142  ]
-"57
-[; ;main.c: 57:          PORTB = PORTB & ~LED;
-[e = _PORTB -> & -> _PORTB `i ~ -> _LED `i `uc ]
-[e :U 142 ]
-"59
-[; ;main.c: 59:     if(Encoder1 == 1050)
-[e $ ! == _Encoder1 -> -> 1050 `i `ui 143  ]
-"60
-[; ;main.c: 60:         PORTB = PORTB | LED;
-[e = _PORTB -> | -> _PORTB `i -> _LED `i `uc ]
-[e :U 143 ]
-"62
-[; ;main.c: 62:     if(Encoder1 == 1150)
-[e $ ! == _Encoder1 -> -> 1150 `i `ui 144  ]
-"63
-[; ;main.c: 63:         PORTB = PORTB & ~LED;
-[e = _PORTB -> & -> _PORTB `i ~ -> _LED `i `uc ]
-[e :U 144 ]
-"65
-[; ;main.c: 65:     }while(Encoder1 != 2100);
-}
-[e $ != _Encoder1 -> -> 2100 `i `ui 140  ]
-[e :U 139 ]
-"66
-[; ;main.c: 66:     PORTB = PORTB | LED;
-[e = _PORTB -> | -> _PORTB `i -> _LED `i `uc ]
-"67
-[; ;main.c: 67:     Encoder1 = 0;
-[e = _Encoder1 -> -> 0 `i `ui ]
-"68
-[; ;main.c: 68:     }
-}
-[e $U 135  ]
-[e :U 136 ]
-}
-"70
-[; ;main.c: 70:     return;
-[e $UE 134  ]
-"71
-[; ;main.c: 71: }
+"27
 [e :UE 134 ]
 }
+"9
+[p x FOSC  =  INTRC_NOCLKOUT ]
+"10
+[p x WDTE  =  OFF        ]
+"11
+[p x PWRTE  =  ON        ]
+"12
+[p x MCLRE  =  ON        ]
+"13
+[p x CP  =  OFF          ]
+"14
+[p x CPD  =  OFF         ]
+"15
+[p x BOREN  =  OFF       ]
+"16
+[p x IESO  =  OFF        ]
+"17
+[p x FCMEN  =  ON        ]
+"18
+[p x LVP  =  OFF         ]
+"21
+[p x BOR4V  =  BOR40V    ]
+"22
+[p x WRT  =  OFF         ]
