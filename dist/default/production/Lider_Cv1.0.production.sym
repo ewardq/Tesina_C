@@ -3,7 +3,7 @@ __S1 78 0 ABS 0
 __S3 0 0 ABS 0
 __Hintentry 0 0 CODE 0
 __Lintentry 0 0 CODE 0
-_main 78D 0 CODE 0
+_main 77F 0 CODE 0
 ___sp 0 0 STACK 2
 btemp 7E 0 ABS 0
 start 0 0 CODE 0
@@ -18,7 +18,7 @@ __Hconfig 2009 0 CONFIG 4
 __Lconfig 0 0 CONFIG 4
 __Hram 0 0 ABS 0
 __Lram 0 0 ABS 0
-_motor 784 0 CODE 0
+_motor 776 0 CODE 0
 __Hfunctab 0 0 ENTRY 0
 __Lfunctab 0 0 ENTRY 0
 __Hcommon 0 0 ABS 0
@@ -62,7 +62,7 @@ __Lbank3 0 0 ABS 0
 ___latbits 2 0 ABS 0
 __Hpowerup 0 0 CODE 0
 __Lpowerup 0 0 CODE 0
-__ptext1 784 0 CODE 0
+__ptext1 776 0 CODE 0
 __Hclrtext 0 0 ABS 0
 __Lclrtext 0 0 ABS 0
 main@Encoder1 74 0 COMMON 1
@@ -85,7 +85,7 @@ __Hspace_4 4010 0 ABS 0
 __Lspace_4 0 0 ABS 0
 __Hend_init 3 0 CODE 0
 __Lend_init 0 0 CODE 0
-__end_of_motor 78D 0 CODE 0
+__end_of_motor 77F 0 CODE 0
 __Hreset_vec 0 0 CODE 0
 __Lreset_vec 0 0 CODE 0
 intlevel0 0 0 ENTRY 0
@@ -100,38 +100,39 @@ __pcstackCOMMON 70 0 COMMON 1
 start_initialization 7FC 0 CODE 0
 __Hmaintext 0 0 ABS 0
 __Lmaintext 0 0 ABS 0
-__pmaintext 78D 0 CODE 0
+__pmaintext 77F 0 CODE 0
 __initialization 7FC 0 CODE 0
 %segments
 reset_vec 0 5 CODE 0 0
 cinit FF8 FFF CODE FF8 0
 cstackCOMMON 70 77 COMMON 70 1
-maintext F1A FF7 CODE F1A 0
-text1 F08 F19 CODE F08 0
+maintext EFE FF7 CODE EFE 0
+text1 EEC EFD CODE EEC 0
 %locals
 dist/default/production\Lider_Cv1.0.production.o
-C:\Users\EMARTI~1\AppData\Local\Temp\xcAsdrs.s
+C:\Users\EMARTI~1\AppData\Local\Temp\xcAsdsk.s
 731 7FC 0 CODE 0
 734 7FC 0 CODE 0
 740 7FC 0 CODE 0
 742 7FC 0 CODE 0
 743 7FD 0 CODE 0
 main.c
-30 78D 0 CODE 0
-31 78D 0 CODE 0
-32 78F 0 CODE 0
-33 793 0 CODE 0
-35 794 0 CODE 0
-36 796 0 CODE 0
-41 796 0 CODE 0
-44 79B 0 CODE 0
-54 7A0 0 CODE 0
-54 7B0 0 CODE 0
-56 7B9 0 CODE 0
-56 7BB 0 CODE 0
-57 7C4 0 CODE 0
-57 7C6 0 CODE 0
-58 7CA 0 CODE 0
+30 77F 0 CODE 0
+31 77F 0 CODE 0
+32 781 0 CODE 0
+33 785 0 CODE 0
+35 786 0 CODE 0
+36 788 0 CODE 0
+41 788 0 CODE 0
+44 78D 0 CODE 0
+54 792 0 CODE 0
+54 7A2 0 CODE 0
+56 7AB 0 CODE 0
+56 7AD 0 CODE 0
+57 7B6 0 CODE 0
+57 7B8 0 CODE 0
+58 7BC 0 CODE 0
+58 7C0 0 CODE 0
 60 7CE 0 CODE 0
 60 7D1 0 CODE 0
 61 7D7 0 CODE 0
@@ -143,9 +144,9 @@ main.c
 67 7F6 0 CODE 0
 68 7F8 0 CODE 0
 motor.c
-4 784 0 CODE 0
-5 784 0 CODE 0
-6 784 0 CODE 0
-7 789 0 CODE 0
-8 789 0 CODE 0
-9 78C 0 CODE 0
+4 776 0 CODE 0
+5 776 0 CODE 0
+6 776 0 CODE 0
+7 77B 0 CODE 0
+8 77B 0 CODE 0
+9 77E 0 CODE 0
