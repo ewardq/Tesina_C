@@ -2577,7 +2577,7 @@ void main(void) {
 
     if ((A_old != A) & (A == 1)){
         Encoder1++;}
-    A_old = A+1;
+    A_old = A;
 
     if(Encoder1 == 2100)
         PORTB = PORTB | LED;
