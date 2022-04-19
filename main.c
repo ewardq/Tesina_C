@@ -25,6 +25,8 @@
 #include "prototipos.h"
 //#include "pic16f886.inc"
 
+#define _XTAL_FREQ 4000000
+
 void main(void) {
     int8_t LED = 1; 
     TRISC = 0b11110000;
@@ -37,9 +39,9 @@ void main(void) {
     bool A_old;
    
     PORTB = PORTB | LED;
-    motor();
+
     for(;;){
-    
+    motor();
         //RC4 = At
         //RC5 = Bt
         //Bt-1 
@@ -53,17 +55,13 @@ void main(void) {
         Encoder1++;}
     A_old = PORTCbits.RC4;
               
-    if(Encoder1 == 100)
-         PORTB = PORTB & ~LED;
-    
-    if(Encoder1 == 1050)
+    if(Encoder1 == 700)
         PORTB = PORTB | LED;
-    
-    if(Encoder1 == 1150)
-        PORTB = PORTB & ~LED;
-    
-    }while(Encoder1 != 2100);
-    PORTB = PORTB | LED;
+
+    }while(Encoder1 != 700);
+    PORTCbits.RC1 = 0;
+    __delay_ms(500);
+    PORTB = PORTB & ~LED;
     Encoder1 = 0;
     }
            
