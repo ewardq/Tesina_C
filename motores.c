@@ -1,6 +1,6 @@
 
 #include <xc.h>
 
-void setup(void) {
+void motor(void) {
 
 }
