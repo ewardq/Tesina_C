@@ -11,7 +11,7 @@
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"28 C:\Users\emartinezp1403\Documents\Tésis\Programas\Lider_Cv1.0\main.c
+"30 C:\Users\emartinezp1403\Documents\Tésis\Programas\Lider_Cv1.0\main.c
 [v _main main `(v  1 e 1 0 ]
 "4 C:\Users\emartinezp1403\Documents\Tésis\Programas\Lider_Cv1.0\motor.c
 [v _motor motor `(v  1 e 1 0 ]
@@ -35,15 +35,17 @@
 [v _TRISB TRISB `VEuc  1 e 1 @134 ]
 "1462
 [v _TRISC TRISC `VEuc  1 e 1 @135 ]
-"28 C:\Users\emartinezp1403\Documents\Tésis\Programas\Lider_Cv1.0\main.c
+"30 C:\Users\emartinezp1403\Documents\Tésis\Programas\Lider_Cv1.0\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"33
-[v main@Encoder1 Encoder1 `ui  1 a 2 2 ]
-"29
-[v main@LED LED `c  1 a 1 4 ]
-"37
-[v main@A_old A_old `a  1 a 1 1 ]
+"35
+[v main@Encoder1 Encoder1 `ui  1 a 2 4 ]
+"38
+[v main@A A `a  1 a 1 7 ]
+"31
+[v main@LED LED `c  1 a 1 6 ]
+"39
+[v main@A_old A_old `a  1 a 1 3 ]
 "71
 } 0
 "4 C:\Users\emartinezp1403\Documents\Tésis\Programas\Lider_Cv1.0\motor.c

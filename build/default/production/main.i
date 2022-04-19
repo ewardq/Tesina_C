@@ -2547,6 +2547,8 @@ void setup(void);
 
 
 
+
+
 void main(void) {
     int8_t LED = 1;
     TRISC = 0b11110000;
@@ -2555,13 +2557,13 @@ void main(void) {
     uint16_t Encoder1 = 0;
     uint16_t Encoder2 = 0;
 
-
+    _Bool A;
     _Bool A_old;
 
     PORTB = PORTB | LED;
-    motor();
-    for(;;){
 
+    for(;;){
+    motor();
 
 
 
@@ -2571,21 +2573,19 @@ void main(void) {
 
 
 
-    if ((A_old != PORTCbits.RC4) & (PORTCbits.RC4 == 1)){
+    A = PORTCbits.RC5 ^ PORTCbits.RC4;
+
+    if ((A_old != A) & (A == 1)){
         Encoder1++;}
-    A_old = PORTCbits.RC4;
+    A_old = A;
 
-    if(Encoder1 == 100)
-         PORTB = PORTB & ~LED;
-
-    if(Encoder1 == 1050)
+    if(Encoder1 == 2100)
         PORTB = PORTB | LED;
 
-    if(Encoder1 == 1150)
-        PORTB = PORTB & ~LED;
-
     }while(Encoder1 != 2100);
-    PORTB = PORTB | LED;
+    PORTCbits.RC1 = 0;
+    _delay((unsigned long)((500)*(4000000/4000.0)));
+    PORTB = PORTB & ~LED;
     Encoder1 = 0;
     }
 

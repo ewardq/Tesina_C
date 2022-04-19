@@ -34,8 +34,8 @@ void main(void) {
 
     uint16_t Encoder1 = 0;
     uint16_t Encoder2 = 0;
-    /*
-    bool A; */
+    
+    bool A; 
     bool A_old;
    
     PORTB = PORTB | LED;
@@ -51,14 +51,16 @@ void main(void) {
     
     Bt_1 = PORTCbits.RC5; 
             */
-    if ((A_old != PORTCbits.RC4) & (PORTCbits.RC4 == 1)){
+    A = PORTCbits.RC5 ^ PORTCbits.RC4;
+        
+    if ((A_old != A) & (A == 1)){
         Encoder1++;}
-    A_old = PORTCbits.RC4;
+    A_old = A;
               
-    if(Encoder1 == 700)
+    if(Encoder1 == 2100)
         PORTB = PORTB | LED;
 
-    }while(Encoder1 != 700);
+    }while(Encoder1 != 2100);
     PORTCbits.RC1 = 0;
     __delay_ms(500);
     PORTB = PORTB & ~LED;
