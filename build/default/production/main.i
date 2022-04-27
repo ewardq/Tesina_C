@@ -29,6 +29,7 @@
 
 
 
+
 # 1 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2526,10 +2527,10 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 29 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\xc.h" 2 3
-# 22 "main.c" 2
+# 23 "main.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c90\\stdbool.h" 1 3
-# 23 "main.c" 2
+# 24 "main.c" 2
 
 # 1 "./prototipos.h" 1
 
@@ -2597,7 +2598,25 @@ void direccional_apagar(void){
      PORTAbits.RA0 = 0;
      PORTAbits.RA1 = 0;
 }
-# 24 "main.c" 2
+
+
+
+
+ void delay_us(unsigned microseconds){
+   while(microseconds > 0){
+       _delay((unsigned long)((1)*(4000000/4000000.0)));
+      microseconds--;
+    }
+ }
+
+void servo_delay_us(unsigned delay){
+    PORTCbits.RC0 = 1;
+    delay_us(delay);
+    PORTCbits.RC0 = 0;
+    delay_us(2000 - delay);
+    _delay((unsigned long)((18000)*(4000000/4000000.0)));
+}
+# 25 "main.c" 2
 
 
 
@@ -2612,54 +2631,31 @@ void main(void) {
     ANSEL = 0x00;
     TRISC = 0x00;
 
-    uint16_t Encoder1 = 0;
-    uint16_t Encoder2 = 0;
-
-    T1CON = 0x10;
-    int a;
-
-    _Bool E1;
-    _Bool E1_old;
-    _Bool E2;
-    _Bool E2_old;
-          PORTBbits.RB7 = 0;
-        vehiculo_atras();
-        _delay((unsigned long)((1000)*(4000000/4000.0)));
-        vehiculo_derecha();
-                direccional(1);
-        _delay((unsigned long)((1000)*(4000000/4000.0)));
-        vehiculo_izquierda();
-                direccional(0);
-        _delay((unsigned long)((1000)*(4000000/4000.0)));
-        vehiculo_detener();
-       _delay((unsigned long)((1000)*(4000000/4000.0)));
-        vehiculo_adelante();
-        direccional_apagar();
+    PORTCbits.RC0 = 0;
+    _delay((unsigned long)((200)*(4000000/4000000.0)));
+    PORTCbits.RC0 = 1;
+    _delay((unsigned long)((1000)*(4000000/4000000.0)));
+    PORTCbits.RC0 = 0;
+    _delay((unsigned long)((19000)*(4000000/4000000.0)));
+            _delay((unsigned long)((1000)*(4000000/4000.0)));
 
     while(1){
-    vehiculo_adelante();
-    TMR1H = 0;
-    TMR1L = 0;
+        servo_delay_us(1000);
+                servo_delay_us(1000);
+                        servo_delay_us(1000);
+        _delay((unsigned long)((1000)*(4000000/4000.0)));
 
-    RA3 = 1;
-    _delay((unsigned long)((10)*(4000000/4000000.0)));
-    RA3 = 0;
+        servo_delay_us(1500);
+                servo_delay_us(1500);
+                        servo_delay_us(1500);
+        _delay((unsigned long)((1000)*(4000000/4000.0)));
 
-    while(!RA2);
-    TMR1ON = 1;
-    while(RA2);
-    TMR1ON = 0;
+         servo_delay_us(1750);
+                servo_delay_us(1750);
+                        servo_delay_us(1750);
+        _delay((unsigned long)((1000)*(4000000/4000.0)));
 
-    a = (TMR1L | (TMR1H<<8));
-    a = a/29.41;
-    a = a + 1;
-    if(a>=2 && a<=400) {
-         if(a < 10){
-              vehiculo_detener();
-              _delay((unsigned long)((1000)*(4000000/4000.0)));
-         }
     }
-    }
-# 114 "main.c"
+# 150 "main.c"
     return;
 }

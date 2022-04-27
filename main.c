@@ -18,13 +18,14 @@
 
 // #pragma config statements should precede project file includes.
 // Use project enums instead of #define for ON and OFF.
+#define _XTAL_FREQ 4000000
 
 #include <xc.h>
 #include <stdbool.h>
 #include "prototipos.h"
 //#include "pic16f886.inc"
 
-#define _XTAL_FREQ 4000000
+
 
 
 
@@ -34,7 +35,33 @@ void main(void) {
     TRISB = 0b00000011;
     ANSEL = 0x00;
     TRISC = 0x00;
-
+    
+    PORTCbits.RC0 = 0;
+    __delay_us(200);
+    PORTCbits.RC0 = 1;
+    __delay_us(1000);    //0°
+    PORTCbits.RC0 = 0;
+    __delay_us(19000);
+            __delay_ms(1000);
+    
+    while(1){
+        servo_delay_us(1000);
+                servo_delay_us(1000);
+                        servo_delay_us(1000);
+        __delay_ms(1000);
+        
+        servo_delay_us(1500);
+                servo_delay_us(1500);
+                        servo_delay_us(1500);
+        __delay_ms(1000);
+        
+         servo_delay_us(1750);
+                servo_delay_us(1750);
+                        servo_delay_us(1750);
+        __delay_ms(1000);       
+        
+    }
+    /*
     uint16_t Encoder1 = 0;
     uint16_t Encoder2 = 0;
     
@@ -45,6 +72,7 @@ void main(void) {
     bool E1_old;
     bool E2; 
     bool E2_old;
+   //Probar los modos de movimiento
           PORTBbits.RB7 = 0;
         vehiculo_atras();
         __delay_ms(1000);
@@ -79,11 +107,19 @@ void main(void) {
     if(a>=2 && a<=400) {//Check whether the result is valid or not
          if(a < 10){
               vehiculo_detener();
+              __delay_ms(500);
+              vehiculo_atras();
+              __delay_ms(2000);
+              vehiculo_derecha();
+              direccional(1);
+              __delay_ms(200);
+              direccional_apagar();
               __delay_ms(1000);
+              vehiculo_adelante();
          }
     }       
     }
-           
+           */
         /*
     do{
         E1 = PORTBbits.RB1;

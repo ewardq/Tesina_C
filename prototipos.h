@@ -64,5 +64,23 @@ void direccional_apagar(void){
      PORTAbits.RA1 = 0;
 }
 
+//void servo_position_deg(){
+//    
+//}
+ void delay_us(unsigned microseconds){
+   while(microseconds > 0){
+       __delay_us(1);
+      microseconds--;
+    }
+ }
+
+void servo_delay_us(unsigned delay){
+    PORTCbits.RC0 = 1;
+    delay_us(delay);     //Posición neutral (90°)
+    PORTCbits.RC0 = 0;
+    delay_us(2000 - delay);
+    __delay_us(18000);
+}
+
 #endif	/* XC_HEADER_TEMPLATE_H */
 

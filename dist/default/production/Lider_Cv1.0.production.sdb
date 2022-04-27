@@ -3,35 +3,19 @@
 [d edition pro ]
 [d chip 16F886 ]
 [d frameptr 0 ]
-"11 C:\Users\emartinezp1403\Documents\Tésis\Programas\Lider_Cv1.0/prototipos.h
-[v _vehiculo_adelante vehiculo_adelante `(v  1 e 1 0 ]
-"19
-[v _vehiculo_derecha vehiculo_derecha `(v  1 e 1 0 ]
-"27
-[v _vehiculo_izquierda vehiculo_izquierda `(v  1 e 1 0 ]
-"35
-[v _vehiculo_atras vehiculo_atras `(v  1 e 1 0 ]
-"43
-[v _vehiculo_detener vehiculo_detener `(v  1 e 1 0 ]
-"51
-[v _direccional direccional `(v  1 e 1 0 ]
-"62
-[v _direccional_apagar direccional_apagar `(v  1 e 1 0 ]
-"43 C:\Program Files\Microchip\xc8\v2.36\pic\sources\c90\common\fltol.c
-[v ___fltol __fltol `(l  1 e 4 0 ]
+"70 C:\Users\emartinezp1403\Documents\Tésis\Programas\Lider_Cv1.0/prototipos.h
+[v _delay_us delay_us `(v  1 e 1 0 ]
+"77
+[v _servo_delay_us servo_delay_us `(v  1 e 1 0 ]
 "10 C:\Program Files\Microchip\xc8\v2.36\pic\sources\c90\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
-"8 C:\Program Files\Microchip\xc8\v2.36\pic\sources\c90\common\sprcdiv.c
-[v ___fldiv __fldiv `(d  1 e 4 0 ]
 "4 C:\Program Files\Microchip\xc8\v2.36\pic\sources\c90\common\Umul8_16.c
 [v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
-"10 C:\Program Files\Microchip\xc8\v2.36\pic\sources\c90\common\xxtofl.c
-[v ___xxtofl __xxtofl `(d  1 e 4 0 ]
 "6 C:\Program Files\Microchip\xc8\v2.36\pic\sources\c90\pic\__eeprom.c
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"31 C:\Users\emartinezp1403\Documents\Tésis\Programas\Lider_Cv1.0\main.c
+"32 C:\Users\emartinezp1403\Documents\Tésis\Programas\Lider_Cv1.0\main.c
 [v _main main `(v  1 e 1 0 ]
 [s S22 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
@@ -45,18 +29,6 @@
 "184 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f886.h
 [u S31 . 1 `S22 1 . 1 0 ]
 [v _PORTAbits PORTAbits `VES31  1 e 1 @5 ]
-[s S69 . 1 `uc 1 RB0 1 0 :1:0 
-`uc 1 RB1 1 0 :1:1 
-`uc 1 RB2 1 0 :1:2 
-`uc 1 RB3 1 0 :1:3 
-`uc 1 RB4 1 0 :1:4 
-`uc 1 RB5 1 0 :1:5 
-`uc 1 RB6 1 0 :1:6 
-`uc 1 RB7 1 0 :1:7 
-]
-"246
-[u S78 . 1 `S69 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES78  1 e 1 @6 ]
 [s S43 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
@@ -69,12 +41,6 @@
 "308
 [u S52 . 1 `S43 1 . 1 0 ]
 [v _PORTCbits PORTCbits `VES52  1 e 1 @7 ]
-"579
-[v _TMR1L TMR1L `VEuc  1 e 1 @14 ]
-"586
-[v _TMR1H TMR1H `VEuc  1 e 1 @15 ]
-"593
-[v _T1CON T1CON `VEuc  1 e 1 @16 ]
 "1338
 [v _TRISA TRISA `VEuc  1 e 1 @133 ]
 "1400
@@ -83,97 +49,20 @@
 [v _TRISC TRISC `VEuc  1 e 1 @135 ]
 "3230
 [v _ANSEL ANSEL `VEuc  1 e 1 @392 ]
-"3905
-[v _RA2 RA2 `VEb  1 e 0 @42 ]
-"3908
-[v _RA3 RA3 `VEb  1 e 0 @43 ]
-"4163
-[v _TMR1ON TMR1ON `VEb  1 e 0 @128 ]
-"31 C:\Users\emartinezp1403\Documents\Tésis\Programas\Lider_Cv1.0\main.c
+"32 C:\Users\emartinezp1403\Documents\Tésis\Programas\Lider_Cv1.0\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"42
-[v main@a a `i  1 a 2 40 ]
-"115
+"151
 } 0
-"27 C:\Users\emartinezp1403\Documents\Tésis\Programas\Lider_Cv1.0/prototipos.h
-[v _vehiculo_izquierda vehiculo_izquierda `(v  1 e 1 0 ]
+"77 C:\Users\emartinezp1403\Documents\Tésis\Programas\Lider_Cv1.0/prototipos.h
+[v _servo_delay_us servo_delay_us `(v  1 e 1 0 ]
 {
-"33
+[v servo_delay_us@delay delay `ui  1 p 2 2 ]
+"83
 } 0
-"43
-[v _vehiculo_detener vehiculo_detener `(v  1 e 1 0 ]
-{
-"49
-} 0
-"19
-[v _vehiculo_derecha vehiculo_derecha `(v  1 e 1 0 ]
-{
-"25
-} 0
-"35
-[v _vehiculo_atras vehiculo_atras `(v  1 e 1 0 ]
-{
-"41
-} 0
-"11
-[v _vehiculo_adelante vehiculo_adelante `(v  1 e 1 0 ]
-{
-"17
-} 0
-"62
-[v _direccional_apagar direccional_apagar `(v  1 e 1 0 ]
-{
-"65
-} 0
-"51
-[v _direccional direccional `(v  1 e 1 0 ]
-{
-[v direccional@op op `ui  1 p 2 0 ]
-"60
-} 0
-"10 C:\Program Files\Microchip\xc8\v2.36\pic\sources\c90\common\xxtofl.c
-[v ___xxtofl __xxtofl `(d  1 e 4 0 ]
-{
-[v ___xxtofl@sign sign `uc  1 a 1 wreg ]
-"13
-[v ___xxtofl@arg arg `ul  1 a 4 10 ]
-"12
-[v ___xxtofl@exp exp `uc  1 a 1 9 ]
-"10
-[v ___xxtofl@sign sign `uc  1 a 1 wreg ]
-[v ___xxtofl@val val `l  1 p 4 0 ]
-"15
-[v ___xxtofl@sign sign `uc  1 a 1 8 ]
-"44
-} 0
-"43 C:\Program Files\Microchip\xc8\v2.36\pic\sources\c90\common\fltol.c
-[v ___fltol __fltol `(l  1 e 4 0 ]
-{
-"45
-[v ___fltol@exp1 exp1 `uc  1 a 1 36 ]
-[v ___fltol@sign1 sign1 `uc  1 a 1 35 ]
-"43
-[v ___fltol@f1 f1 `d  1 p 4 26 ]
 "70
-} 0
-"8 C:\Program Files\Microchip\xc8\v2.36\pic\sources\c90\common\sprcdiv.c
-[v ___fldiv __fldiv `(d  1 e 4 0 ]
+[v _delay_us delay_us `(v  1 e 1 0 ]
 {
-"21
-[v ___fldiv@grs grs `ul  1 a 4 20 ]
-"22
-[v ___fldiv@rem rem `ul  1 a 4 13 ]
-"20
-[v ___fldiv@new_exp new_exp `i  1 a 2 18 ]
-"19
-[v ___fldiv@aexp aexp `uc  1 a 1 25 ]
-"18
-[v ___fldiv@bexp bexp `uc  1 a 1 24 ]
-"16
-[v ___fldiv@sign sign `uc  1 a 1 17 ]
-"8
-[v ___fldiv@a a `d  1 p 4 0 ]
-[v ___fldiv@b b `d  1 p 4 4 ]
-"185
+[v delay_us@microseconds microseconds `ui  1 p 2 0 ]
+"75
 } 0
