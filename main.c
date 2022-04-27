@@ -1,3 +1,7 @@
+#include <xc.h>
+#include <stdbool.h>
+#include "prototipos.h"
+#include "setup.h"
 // PIC16F886 Configuration Bit Settings
     
 // CONFIG1
@@ -19,13 +23,31 @@
 // #pragma config statements should precede project file includes.
 // Use project enums instead of #define for ON and OFF.
 
-#include <xc.h>
-#include <stdbool.h>
-#include "prototipos.h"
-//#include "pic16f886.inc"
+//Macros
+#define MASK(x) ((unsigned char)(1<<x))
 
-#define _XTAL_FREQ 4000000
+// Frecuencia del cristal interno = 4MHz
+#define _XTAL_FREQ  4000000
+
+//Configurando la transmisión EUSART
+#define _TXEN  1   //Activa EUSART
+#define _SYNC  0   //Comunicación asíncrona
+#define _SPEN  1  // Configura TX como salida digital
+#define _BRGH  0  //Activar sólo si se utiliza frecuencia de procesador de más de 4MHz
+#define _BRG16 1  // Activar para enviar un dato de 16 bits, por default envía uno de 8bits
 
 void main(void) {
+    SET_BAUDRATE(9600);
+    
     return;
+}
+
+
+
+
+void SET_BAUDRATE(int br){
+   uint16_t Set_BaudRate;
+   Set_BaudRate = (_XTAL_FREQ / (16*br)) - 1;
+   SPBRG = Set_BaudRate & (MASK(4) | MASK(3) | MASK(2) | MASK(1) | MASK(0));
+   SPBRGH = Set_BaudRate & (MASK(9) | MASK(8) | MASK(7) | MASK(6) | MASK(5));
 }

@@ -2507,7 +2507,10 @@ extern __bank0 __bit __timeout;
 # 29 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\xc.h" 2 3
 # 2 "motores.c" 2
 
+const
 
-void motor(void) {
+
+
+void motor(int PWM) {
 
 }

@@ -1,0 +1,15 @@
+*.i
+*.p1
+
+*.cmf
+*.elf
+*.hex
+*.hxl
+*.lst
+*.map
+*.num
+*.o
+*.rlf
+*.sdb
+*.sym
+*.xml

@@ -4,10 +4,9 @@
 
 #include <xc.h> // include processor files - each processor file is guarded.  
 
-// Salidas y entradas
-
 void motor(void);
 void setup(void);
+void SET_BAUDRATE(int br);
 
 #endif	/* XC_HEADER_TEMPLATE_H */
 

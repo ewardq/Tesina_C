@@ -1,6 +1,9 @@
 
 #include <xc.h>
+const 
 
-void motor(void) {
 
+//Esta función gira el motor a la derecha con el PWM del argumento
+void motor(int PWM) {
+    
 }
