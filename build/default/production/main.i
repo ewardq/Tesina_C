@@ -2544,42 +2544,42 @@ extern __bank0 __bit __timeout;
 void setup(void);
 
 void vehiculo_adelante(void) {
-    PORTBbits.RB7 = 1;
+    PORTAbits.RA7 = 1;
     PORTCbits.RC1 = 0;
 
-    PORTBbits.RB6 = 1;
+    PORTAbits.RA6 = 1;
     PORTCbits.RC2 = 0;
 }
 
 void vehiculo_derecha(void) {
-    PORTBbits.RB7 = 1;
+    PORTAbits.RA7 = 1;
     PORTCbits.RC1 = 0;
 
-    PORTBbits.RB6 = 0;
+    PORTAbits.RA6 = 0;
     PORTCbits.RC2 = 0;
 }
 
 void vehiculo_izquierda(void) {
-    PORTBbits.RB7 = 0;
+    PORTAbits.RA7 = 0;
     PORTCbits.RC1 = 0;
 
-    PORTBbits.RB6 = 1;
+    PORTAbits.RA6 = 1;
     PORTCbits.RC2 = 0;
 }
 
 void vehiculo_atras(void) {
-    PORTBbits.RB7 = 0;
+    PORTAbits.RA7 = 0;
     PORTCbits.RC1 = 1;
 
-    PORTBbits.RB6 = 0;
+    PORTAbits.RA6 = 0;
     PORTCbits.RC2 = 1;
 }
 
 void vehiculo_detener(void) {
-    PORTBbits.RB7 = 0;
+    PORTAbits.RA7 = 0;
     PORTCbits.RC1 = 0;
 
-    PORTBbits.RB6 = 0;
+    PORTAbits.RA6 = 0;
     PORTCbits.RC2 = 0;
 }
 # 25 "main.c" 2
@@ -2599,22 +2599,24 @@ void main(void) {
     uint16_t Encoder1 = 0;
     uint16_t Encoder2 = 0;
 
-    _Bool temp;
-    _Bool temp_old;
+    _Bool E1;
+    _Bool E1_old;
+    _Bool E2;
+    _Bool E2_old;
 
     for(;;){
         vehiculo_adelante();
 
     do{
-        temp = PORTBbits.RB1;
-        if ((temp_old != temp) & (temp == 1)){
+        E1 = PORTBbits.RB1;
+        if ((E1_old != E1) & (E1 == 1)){
             Encoder1++;}
-        temp_old = temp;
+        E1_old = E1;
 
-        temp = PORTBbits.RB0;
-        if ((temp_old != temp) & (temp == 1)){
+        E2 = PORTBbits.RB0;
+        if ((E2 != E2) & (E2 == 1)){
             Encoder2++;}
-        temp_old = temp;
+        E2_old = E2;
     }while(Encoder1 != 2100);
 
 

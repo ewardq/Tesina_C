@@ -38,22 +38,24 @@ void main(void) {
     uint16_t Encoder1 = 0;
     uint16_t Encoder2 = 0;
     
-    bool temp; 
-    bool temp_old;
+    bool E1; 
+    bool E1_old;
+    bool E2; 
+    bool E2_old;
 
     for(;;){
         vehiculo_adelante();
 
     do{
-        temp = PORTBbits.RB1;
-        if ((temp_old != temp) & (temp == 1)){
+        E1 = PORTBbits.RB1;
+        if ((E1_old != E1) & (E1 == 1)){
             Encoder1++;}
-        temp_old = temp;
+        E1_old = E1;
         
-        temp = PORTBbits.RB0;
-        if ((temp_old != temp) & (temp == 1)){
+        E2 = PORTBbits.RB0;
+        if ((E2 != E2) & (E2 == 1)){
             Encoder2++;}
-        temp_old = temp;
+        E2_old = E2;
     }while(Encoder1 != 2100);
 
     

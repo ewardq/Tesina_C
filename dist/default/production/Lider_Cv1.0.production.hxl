@@ -9,11 +9,11 @@
 ### Memory Usage ###
  Intel Hex-file ranges:
   0h - 5h		(dist/default/production\Lider_Cv1.0.production.hex)
-  F16h - FFFh		(dist/default/production\Lider_Cv1.0.production.hex)
+  F1Eh - FFFh		(dist/default/production\Lider_Cv1.0.production.hex)
   4000h - 4007h		(dist/default/production\Lider_Cv1.0.production.hex)
   400Eh - 4011h		(dist/default/production\Lider_Cv1.0.production.hex)
  Unused ranges:
-  6h - F15h
+  6h - F1Dh
   1000h - 3FFFh
   4008h - 400Dh
 
@@ -26,7 +26,7 @@
 ----------------------------------------------------------
 00000000 | H1 H1 H1 H1 H1 H1 -- -- -- -- -- -- -- -- -- --
 ----------------------------------------------------------
-00000F10 | -- -- -- -- -- -- H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00000F10 | -- -- -- -- -- -- -- -- -- -- -- -- -- -- H1 H1
 00000F20 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00000F30 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00000F40 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
