@@ -38,6 +38,9 @@ void main(void) {
     uint16_t Encoder1 = 0;
     uint16_t Encoder2 = 0;
     
+    T1CON = 0x10;               //Initialize Timer Module
+    int a;
+    
     bool E1; 
     bool E1_old;
     bool E2; 
@@ -56,8 +59,32 @@ void main(void) {
         vehiculo_adelante();
         direccional_apagar();
 
-    for(;;){
- 
+    while(1){
+    vehiculo_adelante();
+    TMR1H = 0;                //Sets the Initial Value of Timer
+    TMR1L = 0;                //Sets the Initial Value of Timer
+
+    RA3 = 1;                  //TRIGGER HIGH
+    __delay_us(10);           //10uS Delay 
+    RA3 = 0;                  //TRIGGER LOW
+
+    while(!RA2);              //Waiting for Echo
+    TMR1ON = 1;               //Timer Starts
+    while(RA2);               //Waiting for Echo goes LOW
+    TMR1ON = 0;               //Timer Stops
+
+    a = (TMR1L | (TMR1H<<8)); //Reads Timer Value
+    a = a/29.41;              //Converts Time to Distance
+    a = a + 1;                //Distance Calibration
+    if(a>=2 && a<=400) {//Check whether the result is valid or not
+         if(a < 10){
+              vehiculo_detener();
+              __delay_ms(1000);
+         }
+    }       
+    }
+           
+        /*
     do{
         E1 = PORTBbits.RB1;
         if ((E1_old != E1) & (E1 == 1)){
@@ -83,6 +110,6 @@ void main(void) {
     Encoder2 = 0;
     }
            
-
+*/
     return;
 }
