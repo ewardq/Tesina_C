@@ -2540,14 +2540,126 @@ extern __bank0 __bit __timeout;
 
 
 
-void motor(void);
 void setup(void);
+
+void vehiculo_adelante(void) {
+    PORTAbits.RA7 = 1;
+    PORTCbits.RC1 = 0;
+
+    PORTAbits.RA6 = 1;
+    PORTCbits.RC2 = 0;
+}
+
+void vehiculo_derecha(void) {
+    PORTAbits.RA7 = 1;
+    PORTCbits.RC1 = 0;
+
+    PORTAbits.RA6 = 0;
+    PORTCbits.RC2 = 0;
+}
+
+void vehiculo_izquierda(void) {
+    PORTAbits.RA7 = 0;
+    PORTCbits.RC1 = 0;
+
+    PORTAbits.RA6 = 1;
+    PORTCbits.RC2 = 0;
+}
+
+void vehiculo_atras(void) {
+    PORTAbits.RA7 = 0;
+    PORTCbits.RC1 = 1;
+
+    PORTAbits.RA6 = 0;
+    PORTCbits.RC2 = 1;
+}
+
+void vehiculo_detener(void) {
+    PORTAbits.RA7 = 0;
+    PORTCbits.RC1 = 0;
+
+    PORTAbits.RA6 = 0;
+    PORTCbits.RC2 = 0;
+}
+
+void direccional(unsigned op){
+    if (op == 1){
+        PORTAbits.RA0 = 1;
+        PORTAbits.RA1 = 0;
+    }
+    else{
+        PORTAbits.RA0 = 0;
+        PORTAbits.RA1 = 1;
+    }
+}
+
+void direccional_apagar(void){
+     PORTAbits.RA0 = 0;
+     PORTAbits.RA1 = 0;
+}
 # 24 "main.c" 2
 
 
 
 
 
+
+
 void main(void) {
+
+    TRISA = 0b00000100;
+    TRISB = 0b00000011;
+    ANSEL = 0x00;
+    TRISC = 0x00;
+
+    uint16_t Encoder1 = 0;
+    uint16_t Encoder2 = 0;
+
+    _Bool E1;
+    _Bool E1_old;
+    _Bool E2;
+    _Bool E2_old;
+          PORTBbits.RB7 = 0;
+        vehiculo_atras();
+        _delay((unsigned long)((1000)*(4000000/4000.0)));
+        vehiculo_derecha();
+                direccional(1);
+        _delay((unsigned long)((1000)*(4000000/4000.0)));
+        vehiculo_izquierda();
+                direccional(0);
+        _delay((unsigned long)((1000)*(4000000/4000.0)));
+        vehiculo_detener();
+       _delay((unsigned long)((1000)*(4000000/4000.0)));
+        vehiculo_adelante();
+        direccional_apagar();
+
+    for(;;){
+
+    do{
+        E1 = PORTBbits.RB1;
+        if ((E1_old != E1) & (E1 == 1)){
+            Encoder1++;}
+        E1_old = E1;
+
+        if (Encoder1 == 1050)
+            PORTBbits.RB7 = 1;
+
+        E2 = PORTBbits.RB0;
+        if ((E2_old != E2) & (E2 == 1)){
+            Encoder2++;}
+        E2_old = E2;
+
+        if (Encoder2 == 1050)
+            PORTBbits.RB7 = 1;
+
+    }while(Encoder1 != 2100);
+    PORTBbits.RB7 = 0;
+    vehiculo_detener();
+    _delay((unsigned long)((1000)*(4000000/4000.0)));
+    Encoder1 = 0;
+    Encoder2 = 0;
+    }
+
+
     return;
 }
