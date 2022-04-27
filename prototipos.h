@@ -48,5 +48,21 @@ void vehiculo_detener(void) {
     PORTCbits.RC2 = 0;
 }
 
+void direccional(unsigned op){
+    if (op == 1){
+        PORTAbits.RA0 = 1;
+        PORTAbits.RA1 = 0;
+    }
+    else{
+        PORTAbits.RA0 = 0;
+        PORTAbits.RA1 = 1;
+    }
+}
+
+void direccional_apagar(void){
+     PORTAbits.RA0 = 0;
+     PORTAbits.RA1 = 0;
+}
+
 #endif	/* XC_HEADER_TEMPLATE_H */
 

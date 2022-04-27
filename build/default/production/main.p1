@@ -28,6 +28,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1400
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f886.h: 1400: extern volatile unsigned char TRISB __attribute__((address(0x086)));
 [v _TRISB `Vuc ~T0 @X0 0 e@134 ]
+"3230
+[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f886.h: 3230: extern volatile unsigned char ANSEL __attribute__((address(0x188)));
+[v _ANSEL `Vuc ~T0 @X0 0 e@392 ]
 "1462
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f886.h: 1462: extern volatile unsigned char TRISC __attribute__((address(0x087)));
 [v _TRISC `Vuc ~T0 @X0 0 e@135 ]
@@ -408,6 +411,61 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./prototipos.h: 49: }
 [e :UE 138 ]
 }
+"51
+[; ;./prototipos.h: 51: void direccional(unsigned op){
+[v _direccional `(v ~T0 @X0 1 ef1`ui ]
+{
+[e :U _direccional ]
+[v _op `ui ~T0 @X0 1 r1 ]
+[f ]
+"52
+[; ;./prototipos.h: 52:     if (op == 1){
+[e $ ! == _op -> -> 1 `i `ui 140  ]
+{
+"53
+[; ;./prototipos.h: 53:         PORTAbits.RA0 = 1;
+[e = . . _PORTAbits 0 0 -> -> 1 `i `uc ]
+"54
+[; ;./prototipos.h: 54:         PORTAbits.RA1 = 0;
+[e = . . _PORTAbits 0 1 -> -> 0 `i `uc ]
+"55
+[; ;./prototipos.h: 55:     }
+}
+[e $U 141  ]
+"56
+[; ;./prototipos.h: 56:     else{
+[e :U 140 ]
+{
+"57
+[; ;./prototipos.h: 57:         PORTAbits.RA0 = 0;
+[e = . . _PORTAbits 0 0 -> -> 0 `i `uc ]
+"58
+[; ;./prototipos.h: 58:         PORTAbits.RA1 = 1;
+[e = . . _PORTAbits 0 1 -> -> 1 `i `uc ]
+"59
+[; ;./prototipos.h: 59:     }
+}
+[e :U 141 ]
+"60
+[; ;./prototipos.h: 60: }
+[e :UE 139 ]
+}
+"62
+[; ;./prototipos.h: 62: void direccional_apagar(void){
+[v _direccional_apagar `(v ~T0 @X0 1 ef ]
+{
+[e :U _direccional_apagar ]
+[f ]
+"63
+[; ;./prototipos.h: 63:      PORTAbits.RA0 = 0;
+[e = . . _PORTAbits 0 0 -> -> 0 `i `uc ]
+"64
+[; ;./prototipos.h: 64:      PORTAbits.RA1 = 0;
+[e = . . _PORTAbits 0 1 -> -> 0 `i `uc ]
+"65
+[; ;./prototipos.h: 65: }
+[e :UE 142 ]
+}
 [v $root$_main `(v ~T0 @X0 0 e ]
 "32 main.c
 [; ;main.c: 32: void main(void) {
@@ -422,97 +480,153 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 35:     TRISB = 0b00000011;
 [e = _TRISB -> -> 3 `i `uc ]
 "36
-[; ;main.c: 36:     TRISC = 0x00;
+[; ;main.c: 36:     ANSEL = 0x00;
+[e = _ANSEL -> -> 0 `i `uc ]
+"37
+[; ;main.c: 37:     TRISC = 0x00;
 [e = _TRISC -> -> 0 `i `uc ]
-"38
-[; ;main.c: 38:     uint16_t Encoder1 = 0;
+"39
+[; ;main.c: 39:     uint16_t Encoder1 = 0;
 [v _Encoder1 `ui ~T0 @X0 1 a ]
 [e = _Encoder1 -> -> 0 `i `ui ]
-"39
-[; ;main.c: 39:     uint16_t Encoder2 = 0;
+"40
+[; ;main.c: 40:     uint16_t Encoder2 = 0;
 [v _Encoder2 `ui ~T0 @X0 1 a ]
 [e = _Encoder2 -> -> 0 `i `ui ]
-"41
-[; ;main.c: 41:     _Bool E1;
-[v _E1 `a ~T0 @X0 1 a ]
 "42
-[; ;main.c: 42:     _Bool E1_old;
-[v _E1_old `a ~T0 @X0 1 a ]
+[; ;main.c: 42:     _Bool E1;
+[v _E1 `a ~T0 @X0 1 a ]
 "43
-[; ;main.c: 43:     _Bool E2;
-[v _E2 `a ~T0 @X0 1 a ]
+[; ;main.c: 43:     _Bool E1_old;
+[v _E1_old `a ~T0 @X0 1 a ]
 "44
-[; ;main.c: 44:     _Bool E2_old;
+[; ;main.c: 44:     _Bool E2;
+[v _E2 `a ~T0 @X0 1 a ]
+"45
+[; ;main.c: 45:     _Bool E2_old;
 [v _E2_old `a ~T0 @X0 1 a ]
 "46
-[; ;main.c: 46:     for(;;){
-{
-[e :U 140 ]
-{
+[; ;main.c: 46:           PORTBbits.RB7 = 0;
+[e = . . _PORTBbits 0 7 -> -> 0 `i `uc ]
 "47
-[; ;main.c: 47:         vehiculo_adelante();
-[e ( _vehiculo_adelante ..  ]
+[; ;main.c: 47:         vehiculo_atras();
+[e ( _vehiculo_atras ..  ]
+"48
+[; ;main.c: 48:         _delay((unsigned long)((1000)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
 "49
-[; ;main.c: 49:     do{
-[e :U 145 ]
-{
+[; ;main.c: 49:         vehiculo_derecha();
+[e ( _vehiculo_derecha ..  ]
 "50
-[; ;main.c: 50:         E1 = PORTBbits.RB1;
-[e = _E1 -> . . _PORTBbits 0 1 `a ]
+[; ;main.c: 50:                 direccional(1);
+[e ( _direccional (1 -> -> 1 `i `ui ]
 "51
-[; ;main.c: 51:         if ((E1_old != E1) & (E1 == 1)){
-[e $ ! & != -> _E1_old `i -> _E1 `i == -> _E1 `i -> 1 `i 146  ]
-{
+[; ;main.c: 51:         _delay((unsigned long)((1000)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
 "52
-[; ;main.c: 52:             Encoder1++;}
+[; ;main.c: 52:         vehiculo_izquierda();
+[e ( _vehiculo_izquierda ..  ]
+"53
+[; ;main.c: 53:                 direccional(0);
+[e ( _direccional (1 -> -> 0 `i `ui ]
+"54
+[; ;main.c: 54:         _delay((unsigned long)((1000)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"55
+[; ;main.c: 55:         vehiculo_detener();
+[e ( _vehiculo_detener ..  ]
+"56
+[; ;main.c: 56:        _delay((unsigned long)((1000)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"57
+[; ;main.c: 57:         vehiculo_adelante();
+[e ( _vehiculo_adelante ..  ]
+"58
+[; ;main.c: 58:         direccional_apagar();
+[e ( _direccional_apagar ..  ]
+"60
+[; ;main.c: 60:     for(;;){
+{
+[e :U 144 ]
+{
+"62
+[; ;main.c: 62:     do{
+[e :U 149 ]
+{
+"63
+[; ;main.c: 63:         E1 = PORTBbits.RB1;
+[e = _E1 -> . . _PORTBbits 0 1 `a ]
+"64
+[; ;main.c: 64:         if ((E1_old != E1) & (E1 == 1)){
+[e $ ! & != -> _E1_old `i -> _E1 `i == -> _E1 `i -> 1 `i 150  ]
+{
+"65
+[; ;main.c: 65:             Encoder1++;}
 [e ++ _Encoder1 -> -> 1 `i `ui ]
 }
-[e :U 146 ]
-"53
-[; ;main.c: 53:         E1_old = E1;
+[e :U 150 ]
+"66
+[; ;main.c: 66:         E1_old = E1;
 [e = _E1_old _E1 ]
-"55
-[; ;main.c: 55:         E2 = PORTBbits.RB0;
+"68
+[; ;main.c: 68:         if (Encoder1 == 1050)
+[e $ ! == _Encoder1 -> -> 1050 `i `ui 151  ]
+"69
+[; ;main.c: 69:             PORTBbits.RB7 = 1;
+[e = . . _PORTBbits 0 7 -> -> 1 `i `uc ]
+[e :U 151 ]
+"71
+[; ;main.c: 71:         E2 = PORTBbits.RB0;
 [e = _E2 -> . . _PORTBbits 0 0 `a ]
-"56
-[; ;main.c: 56:         if ((E2 != E2) & (E2 == 1)){
-[e $ ! & != -> _E2 `i -> _E2 `i == -> _E2 `i -> 1 `i 147  ]
+"72
+[; ;main.c: 72:         if ((E2_old != E2) & (E2 == 1)){
+[e $ ! & != -> _E2_old `i -> _E2 `i == -> _E2 `i -> 1 `i 152  ]
 {
-"57
-[; ;main.c: 57:             Encoder2++;}
+"73
+[; ;main.c: 73:             Encoder2++;}
 [e ++ _Encoder2 -> -> 1 `i `ui ]
 }
-[e :U 147 ]
-"58
-[; ;main.c: 58:         E2_old = E2;
+[e :U 152 ]
+"74
+[; ;main.c: 74:         E2_old = E2;
 [e = _E2_old _E2 ]
-"59
-[; ;main.c: 59:     }while(Encoder1 != 2100);
+"76
+[; ;main.c: 76:         if (Encoder2 == 1050)
+[e $ ! == _Encoder2 -> -> 1050 `i `ui 153  ]
+"77
+[; ;main.c: 77:             PORTBbits.RB7 = 1;
+[e = . . _PORTBbits 0 7 -> -> 1 `i `uc ]
+[e :U 153 ]
+"79
+[; ;main.c: 79:     }while(Encoder1 != 2100);
 }
-[e $ != _Encoder1 -> -> 2100 `i `ui 145  ]
-[e :U 144 ]
-"62
-[; ;main.c: 62:     vehiculo_detener();
+[e $ != _Encoder1 -> -> 2100 `i `ui 149  ]
+[e :U 148 ]
+"80
+[; ;main.c: 80:     PORTBbits.RB7 = 0;
+[e = . . _PORTBbits 0 7 -> -> 0 `i `uc ]
+"81
+[; ;main.c: 81:     vehiculo_detener();
 [e ( _vehiculo_detener ..  ]
-"63
-[; ;main.c: 63:     _delay((unsigned long)((500)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"64
-[; ;main.c: 64:     Encoder1 = 0;
+"82
+[; ;main.c: 82:     _delay((unsigned long)((1000)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"83
+[; ;main.c: 83:     Encoder1 = 0;
 [e = _Encoder1 -> -> 0 `i `ui ]
-"65
-[; ;main.c: 65:     Encoder2 = 0;
+"84
+[; ;main.c: 84:     Encoder2 = 0;
 [e = _Encoder2 -> -> 0 `i `ui ]
-"66
-[; ;main.c: 66:     }
+"85
+[; ;main.c: 85:     }
 }
-[e $U 140  ]
-[e :U 141 ]
+[e $U 144  ]
+[e :U 145 ]
 }
-"68
-[; ;main.c: 68:     return;
-[e $UE 139  ]
-"69
-[; ;main.c: 69: }
-[e :UE 139 ]
+"87
+[; ;main.c: 87:     return;
+[e $UE 143  ]
+"88
+[; ;main.c: 88: }
+[e :UE 143 ]
 }

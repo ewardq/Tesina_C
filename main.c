@@ -33,6 +33,7 @@ void main(void) {
     //Configurando puertos
     TRISA = 0b00000100; 
     TRISB = 0b00000011;
+    ANSEL = 0x00;
     TRISC = 0x00;
 
     uint16_t Encoder1 = 0;
@@ -42,25 +43,43 @@ void main(void) {
     bool E1_old;
     bool E2; 
     bool E2_old;
+          PORTBbits.RB7 = 0;
+        vehiculo_atras();
+        __delay_ms(1000);
+        vehiculo_derecha();
+                direccional(1);
+        __delay_ms(1000);
+        vehiculo_izquierda();
+                direccional(0);
+        __delay_ms(1000);
+        vehiculo_detener();
+       __delay_ms(1000);
+        vehiculo_adelante();
+        direccional_apagar();
 
     for(;;){
-        vehiculo_adelante();
-
+ 
     do{
         E1 = PORTBbits.RB1;
         if ((E1_old != E1) & (E1 == 1)){
             Encoder1++;}
         E1_old = E1;
         
+        if (Encoder1 == 1050)
+            PORTBbits.RB7 = 1;
+        
         E2 = PORTBbits.RB0;
-        if ((E2 != E2) & (E2 == 1)){
+        if ((E2_old != E2) & (E2 == 1)){
             Encoder2++;}
         E2_old = E2;
+        
+        if (Encoder2 == 1050)
+            PORTBbits.RB7 = 1;
+        
     }while(Encoder1 != 2100);
-
-    
+    PORTBbits.RB7 = 0;
     vehiculo_detener();
-    __delay_ms(500);
+    __delay_ms(1000);
     Encoder1 = 0;
     Encoder2 = 0;
     }
