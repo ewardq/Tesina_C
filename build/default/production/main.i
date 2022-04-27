@@ -2541,52 +2541,87 @@ extern __bank0 __bit __timeout;
 
 
 
-void motor(void);
 void setup(void);
+
+void vehiculo_adelante(void) {
+    PORTBbits.RB7 = 1;
+    PORTCbits.RC1 = 0;
+
+    PORTBbits.RB6 = 1;
+    PORTCbits.RC2 = 0;
+}
+
+void vehiculo_derecha(void) {
+    PORTBbits.RB7 = 1;
+    PORTCbits.RC1 = 0;
+
+    PORTBbits.RB6 = 0;
+    PORTCbits.RC2 = 0;
+}
+
+void vehiculo_izquierda(void) {
+    PORTBbits.RB7 = 0;
+    PORTCbits.RC1 = 0;
+
+    PORTBbits.RB6 = 1;
+    PORTCbits.RC2 = 0;
+}
+
+void vehiculo_atras(void) {
+    PORTBbits.RB7 = 0;
+    PORTCbits.RC1 = 1;
+
+    PORTBbits.RB6 = 0;
+    PORTCbits.RC2 = 1;
+}
+
+void vehiculo_detener(void) {
+    PORTBbits.RB7 = 0;
+    PORTCbits.RC1 = 0;
+
+    PORTBbits.RB6 = 0;
+    PORTCbits.RC2 = 0;
+}
 # 25 "main.c" 2
 
 
 
 
 
+
+
 void main(void) {
-    int8_t LED = 1;
-    TRISC = 0b11110000;
-    TRISB = 0x00;
+
+    TRISA = 0b00000100;
+    TRISB = 0b00000011;
+    TRISC = 0x00;
 
     uint16_t Encoder1 = 0;
     uint16_t Encoder2 = 0;
 
-    _Bool A;
-    _Bool A_old;
-
-    PORTB = PORTB | LED;
+    _Bool temp;
+    _Bool temp_old;
 
     for(;;){
-    motor();
-
-
+        vehiculo_adelante();
 
     do{
+        temp = PORTBbits.RB1;
+        if ((temp_old != temp) & (temp == 1)){
+            Encoder1++;}
+        temp_old = temp;
 
-
-
-
-
-    A = PORTCbits.RC5 ^ PORTCbits.RC4;
-
-    if ((A_old != A) & (A == 1)){
-        Encoder1++;}
-    A_old = A;
-
-    if(Encoder1 == 2100)
-        PORTB = PORTB | LED;
-
+        temp = PORTBbits.RB0;
+        if ((temp_old != temp) & (temp == 1)){
+            Encoder2++;}
+        temp_old = temp;
     }while(Encoder1 != 2100);
-    PORTCbits.RC1 = 0;
+
+
+    vehiculo_detener();
     _delay((unsigned long)((500)*(4000000/4000.0)));
-    PORTB = PORTB & ~LED;
     Encoder1 = 0;
+    Encoder2 = 0;
     }
 
     return;

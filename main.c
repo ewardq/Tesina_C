@@ -27,44 +27,40 @@
 
 #define _XTAL_FREQ 4000000
 
+
+
 void main(void) {
-    int8_t LED = 1; 
-    TRISC = 0b11110000;
-    TRISB = 0x00;
+    //Configurando puertos
+    TRISA = 0b00000100; 
+    TRISB = 0b00000011;
+    TRISC = 0x00;
 
     uint16_t Encoder1 = 0;
     uint16_t Encoder2 = 0;
     
-    bool A; 
-    bool A_old;
-   
-    PORTB = PORTB | LED;
+    bool temp; 
+    bool temp_old;
 
     for(;;){
-    motor();
-        //RC4 = At
-        //RC5 = Bt
-        //Bt-1 
-    do{
-  /*  if((Bt_1 & PORTCbits.RC4) | (~PORTCbits.RC4 & ~Bt_1))
-        Encoder1++;
-    
-    Bt_1 = PORTCbits.RC5; 
-            */
-    A = PORTCbits.RC5 ^ PORTCbits.RC4;
-        
-    if ((A_old != A) & (A == 1)){
-        Encoder1++;}
-    A_old = A;
-              
-    if(Encoder1 == 2100)
-        PORTB = PORTB | LED;
+        vehiculo_adelante();
 
+    do{
+        temp = PORTBbits.RB1;
+        if ((temp_old != temp) & (temp == 1)){
+            Encoder1++;}
+        temp_old = temp;
+        
+        temp = PORTBbits.RB0;
+        if ((temp_old != temp) & (temp == 1)){
+            Encoder2++;}
+        temp_old = temp;
     }while(Encoder1 != 2100);
-    PORTCbits.RC1 = 0;
+
+    
+    vehiculo_detener();
     __delay_ms(500);
-    PORTB = PORTB & ~LED;
     Encoder1 = 0;
+    Encoder2 = 0;
     }
            
     return;

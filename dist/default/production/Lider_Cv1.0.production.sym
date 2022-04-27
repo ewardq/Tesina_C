@@ -1,31 +1,28 @@
 __S0 800 0 ABS 0
-__S1 78 0 ABS 0
+__S1 79 0 ABS 0
 __S3 0 0 ABS 0
 __Hintentry 0 0 CODE 0
 __Lintentry 0 0 CODE 0
-_main 78D 0 CODE 0
+_main 799 0 CODE 0
 ___sp 0 0 STACK 2
 btemp 7E 0 ABS 0
 start 0 0 CODE 0
+_TRISA 85 0 ABS 0
 _TRISB 86 0 ABS 0
 _TRISC 87 0 ABS 0
 reset_vec 0 0 CODE 0
-_PORTB 6 0 ABS 0
-main@A 77 0 COMMON 1
-_PORTC 7 0 ABS 0
 wtemp0 7E 0 ABS 0
 __Hconfig 2009 0 CONFIG 4
 __Lconfig 0 0 CONFIG 4
 __Hram 0 0 ABS 0
 __Lram 0 0 ABS 0
-_motor 784 0 CODE 0
 __Hfunctab 0 0 ENTRY 0
 __Lfunctab 0 0 ENTRY 0
+main@temp 78 0 COMMON 1
 __Hcommon 0 0 ABS 0
 __Lcommon 0 0 ABS 0
 __Heeprom_data 0 0 EEDATA 3
 __Leeprom_data 0 0 EEDATA 3
-main@A_old 73 0 COMMON 1
 ___int_sp 0 0 STACK 2
 __Habs1 0 0 ABS 0
 __Labs1 0 0 ABS 0
@@ -47,10 +44,11 @@ __Htext 0 0 ABS 0
 __Ltext 0 0 ABS 0
 end_of_initialization 7FC 0 CODE 0
 ___stacklo 0 0 ABS 0
+_vehiculo_detener 792 0 CODE 0
+_PORTBbits 6 0 ABS 0
 _PORTCbits 7 0 ABS 0
 __Hstrings 0 0 ABS 0
 __Lstrings 0 0 ABS 0
-main@LED 76 0 COMMON 1
 __Hbank0 0 0 ABS 0
 __Lbank0 0 0 ABS 0
 __Hbank1 0 0 ABS 0
@@ -62,18 +60,20 @@ __Lbank3 0 0 ABS 0
 ___latbits 2 0 ABS 0
 __Hpowerup 0 0 CODE 0
 __Lpowerup 0 0 CODE 0
-__ptext1 784 0 CODE 0
+__ptext1 792 0 CODE 0
+__ptext2 78B 0 CODE 0
 __Hclrtext 0 0 ABS 0
 __Lclrtext 0 0 ABS 0
-main@Encoder1 74 0 COMMON 1
+main@Encoder1 75 0 COMMON 1
 __end_of__initialization 7FC 0 CODE 0
 __Hidloc 2004 0 IDLOC 5
 __Lidloc 0 0 IDLOC 5
 __Hstack 0 0 STACK 2
 __Lstack 0 0 STACK 2
+main@Encoder2 73 0 COMMON 1
 __Hspace_0 800 0 ABS 0
 __Lspace_0 0 0 ABS 0
-__Hspace_1 78 0 ABS 0
+__Hspace_1 79 0 ABS 0
 __Lspace_1 0 0 ABS 0
 __Hspace_2 0 0 ABS 0
 __Lspace_2 0 0 ABS 0
@@ -83,69 +83,77 @@ __Hspace_3 0 0 ABS 0
 __Lspace_3 0 0 ABS 0
 __Hspace_4 4010 0 ABS 0
 __Lspace_4 0 0 ABS 0
+__end_of_vehiculo_detener 799 0 CODE 0
 __Hend_init 3 0 CODE 0
 __Lend_init 0 0 CODE 0
-__end_of_motor 78D 0 CODE 0
 __Hreset_vec 0 0 CODE 0
 __Lreset_vec 0 0 CODE 0
+main@temp_old 77 0 COMMON 1
 intlevel0 0 0 ENTRY 0
 intlevel1 0 0 ENTRY 0
 intlevel2 0 0 ENTRY 0
 intlevel3 0 0 ENTRY 0
 intlevel4 0 0 ENTRY 0
+__end_of_vehiculo_adelante 792 0 CODE 0
 intlevel5 0 0 ENTRY 0
 __HcstackCOMMON 0 0 ABS 0
 __LcstackCOMMON 0 0 ABS 0
 __pcstackCOMMON 70 0 COMMON 1
 start_initialization 7FC 0 CODE 0
+_vehiculo_adelante 78B 0 CODE 0
 __Hmaintext 0 0 ABS 0
 __Lmaintext 0 0 ABS 0
-__pmaintext 78D 0 CODE 0
+__pmaintext 799 0 CODE 0
 __initialization 7FC 0 CODE 0
 %segments
 reset_vec 0 5 CODE 0 0
 cinit FF8 FFF CODE FF8 0
-cstackCOMMON 70 77 COMMON 70 1
-maintext F1A FF7 CODE F1A 0
-text1 F08 F19 CODE F08 0
+cstackCOMMON 70 78 COMMON 70 1
+maintext F32 FF7 CODE F32 0
+text1 F24 F31 CODE F24 0
+text2 F16 F23 CODE F16 0
 %locals
 dist/default/production\Lider_Cv1.0.production.o
-C:\Users\EMARTI~1\AppData\Local\Temp\xcAs2sg.s
-731 7FC 0 CODE 0
-734 7FC 0 CODE 0
-740 7FC 0 CODE 0
-742 7FC 0 CODE 0
-743 7FD 0 CODE 0
+C:\Users\EMARTI~1\AppData\Local\Temp\xcAs99k.s
+580 7FC 0 CODE 0
+583 7FC 0 CODE 0
+589 7FC 0 CODE 0
+591 7FC 0 CODE 0
+592 7FD 0 CODE 0
 main.c
-30 78D 0 CODE 0
-31 78D 0 CODE 0
-32 78F 0 CODE 0
-33 793 0 CODE 0
-35 794 0 CODE 0
-36 796 0 CODE 0
-41 796 0 CODE 0
-44 79B 0 CODE 0
-54 7A0 0 CODE 0
-54 7B0 0 CODE 0
-56 7B9 0 CODE 0
-56 7BB 0 CODE 0
-57 7C4 0 CODE 0
-57 7C6 0 CODE 0
-58 7CA 0 CODE 0
-60 7CE 0 CODE 0
-60 7D1 0 CODE 0
-61 7D7 0 CODE 0
-63 7DA 0 CODE 0
-63 7DD 0 CODE 0
-64 7E3 0 CODE 0
-65 7E4 0 CODE 0
-66 7F1 0 CODE 0
-67 7F6 0 CODE 0
-68 7F8 0 CODE 0
-motor.c
-4 784 0 CODE 0
-5 784 0 CODE 0
-6 784 0 CODE 0
-7 789 0 CODE 0
-8 789 0 CODE 0
-9 78C 0 CODE 0
+32 799 0 CODE 0
+34 799 0 CODE 0
+35 79D 0 CODE 0
+36 79F 0 CODE 0
+38 7A0 0 CODE 0
+39 7A2 0 CODE 0
+45 7A4 0 CODE 0
+48 7A9 0 CODE 0
+49 7AF 0 CODE 0
+49 7B1 0 CODE 0
+50 7BA 0 CODE 0
+50 7BC 0 CODE 0
+51 7C0 0 CODE 0
+53 7C4 0 CODE 0
+54 7C8 0 CODE 0
+54 7CA 0 CODE 0
+55 7D3 0 CODE 0
+55 7D5 0 CODE 0
+56 7D9 0 CODE 0
+57 7DD 0 CODE 0
+57 7E0 0 CODE 0
+60 7E6 0 CODE 0
+61 7EB 0 CODE 0
+./prototipos.h
+43 792 0 CODE 0
+44 792 0 CODE 0
+45 795 0 CODE 0
+47 796 0 CODE 0
+48 797 0 CODE 0
+49 798 0 CODE 0
+11 78B 0 CODE 0
+12 78B 0 CODE 0
+13 78E 0 CODE 0
+15 78F 0 CODE 0
+16 790 0 CODE 0
+17 791 0 CODE 0
