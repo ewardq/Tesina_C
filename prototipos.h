@@ -166,7 +166,46 @@ unsigned int get_distancia_ultrasonico(){
      }       
     else return 0;
 }
-
 // ============================================================================
+
+// ____________________________________________________________________________
+// =================  Contadores y procesamiento de Encoders  =================
+// ============================================================================
+ 
+    /*
+    bool E1; 
+    bool E1_old;
+    bool E2; 
+    bool E2_old;
+
+        /*
+    do{
+        E1 = PORTBbits.RB1;
+        if ((E1_old != E1) & (E1 == 1)){
+            Encoder1++;}
+        E1_old = E1;
+        
+        if (Encoder1 == 1050)
+            PORTBbits.RB7 = 1;
+        
+        E2 = PORTBbits.RB0;
+        if ((E2_old != E2) & (E2 == 1)){
+            Encoder2++;}
+        E2_old = E2;
+        
+        if (Encoder2 == 1050)
+            PORTBbits.RB7 = 1;
+        
+    }while(Encoder1 != 2100);
+    PORTBbits.RB7 = 0;
+    vehiculo_detener();
+    __delay_ms(1000);
+    Encoder1 = 0;
+    Encoder2 = 0;
+    }
+           
+*/
+// ============================================================================
+
 #endif	/* XC_HEADER_TEMPLATE_H */
 

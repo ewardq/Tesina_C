@@ -825,10 +825,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 172 ]
 [e $U 173  ]
 [e :U 174 ]
-"98
-[; ;main.c: 98:     return;
+"62
+[; ;main.c: 62:     return;
 [e $UE 171  ]
-"99
-[; ;main.c: 99: }
+"63
+[; ;main.c: 63: }
 [e :UE 171 ]
 }
