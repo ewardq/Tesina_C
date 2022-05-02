@@ -30,6 +30,7 @@
 
 
 
+
 # 1 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2527,10 +2528,10 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 29 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\xc.h" 2 3
-# 23 "main.c" 2
+# 24 "main.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c90\\stdbool.h" 1 3
-# 24 "main.c" 2
+# 25 "main.c" 2
 
 # 1 "./prototipos.h" 1
 
@@ -2602,23 +2603,38 @@ void direccional_apagar(void){
 
 
 
- void delay_us(unsigned microseconds){
-   while(microseconds > 0){
-       _delay((unsigned long)((1)*(4000000/4000000.0)));
-      microseconds--;
-    }
- }
 
-void servo_delay_us(unsigned delay){
-    PORTCbits.RC0 = 1;
-    delay_us(delay);
-    PORTCbits.RC0 = 0;
-    delay_us(2000 - delay);
-    _delay((unsigned long)((18000)*(4000000/4000000.0)));
+const unsigned _0 = 0;
+const unsigned _90 = 90;
+const unsigned _180 = 180;
+
+void posicionar_servo(unsigned degrees){
+    for(int i = 0; i < 6; i++){
+     PORTCbits.RC0 = 1;
+        _delay((unsigned long)((1000)*(4000000/4000000.0)));
+        switch(degrees){
+            case 0:
+             break;
+            case 90: _delay((unsigned long)((500)*(4000000/4000000.0)));
+             break;
+            case 180: _delay((unsigned long)((1000)*(4000000/4000000.0)));
+             break;
+            default: _delay((unsigned long)((500)*(4000000/4000000.0)));
+        }
+     PORTCbits.RC0 = 0;
+        switch(degrees){
+            case 0: _delay((unsigned long)((1000)*(4000000/4000000.0)));
+             break;
+            case 90: _delay((unsigned long)((500)*(4000000/4000000.0)));
+             break;
+            case 180:
+             break;
+            default: _delay((unsigned long)((500)*(4000000/4000000.0)));
+        }
+        _delay((unsigned long)((18000)*(4000000/4000000.0)));
+     }
 }
-# 25 "main.c" 2
-
-
+# 26 "main.c" 2
 
 
 
@@ -2631,31 +2647,20 @@ void main(void) {
     ANSEL = 0x00;
     TRISC = 0x00;
 
-    PORTCbits.RC0 = 0;
-    _delay((unsigned long)((200)*(4000000/4000000.0)));
-    PORTCbits.RC0 = 1;
-    _delay((unsigned long)((1000)*(4000000/4000000.0)));
-    PORTCbits.RC0 = 0;
-    _delay((unsigned long)((19000)*(4000000/4000000.0)));
-            _delay((unsigned long)((1000)*(4000000/4000.0)));
-
+    direccional_apagar();
+    vehiculo_detener();
     while(1){
-        servo_delay_us(1000);
-                servo_delay_us(1000);
-                        servo_delay_us(1000);
-        _delay((unsigned long)((1000)*(4000000/4000.0)));
 
-        servo_delay_us(1500);
-                servo_delay_us(1500);
-                        servo_delay_us(1500);
-        _delay((unsigned long)((1000)*(4000000/4000.0)));
+     _delay((unsigned long)((1000)*(4000000/4000.0)));
+     posicionar_servo(_90);
 
-         servo_delay_us(1750);
-                servo_delay_us(1750);
-                        servo_delay_us(1750);
-        _delay((unsigned long)((1000)*(4000000/4000.0)));
+     _delay((unsigned long)((1000)*(4000000/4000.0)));
+     posicionar_servo(_0);
+
+     _delay((unsigned long)((1000)*(4000000/4000.0)));
+     posicionar_servo(_180);
 
     }
-# 150 "main.c"
+# 138 "main.c"
     return;
 }

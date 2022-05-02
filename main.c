@@ -20,11 +20,10 @@
 // Use project enums instead of #define for ON and OFF.
 #define _XTAL_FREQ 4000000
 
+
 #include <xc.h>
 #include <stdbool.h>
 #include "prototipos.h"
-//#include "pic16f886.inc"
-
 
 
 
@@ -35,31 +34,20 @@ void main(void) {
     TRISB = 0b00000011;
     ANSEL = 0x00;
     TRISC = 0x00;
-    
-    PORTCbits.RC0 = 0;
-    __delay_us(200);
-    PORTCbits.RC0 = 1;
-    __delay_us(1000);    //0°
-    PORTCbits.RC0 = 0;
-    __delay_us(19000);
-            __delay_ms(1000);
-    
+        
+    direccional_apagar();
+    vehiculo_detener();
     while(1){
-        servo_delay_us(1000);
-                servo_delay_us(1000);
-                        servo_delay_us(1000);
-        __delay_ms(1000);
-        
-        servo_delay_us(1500);
-                servo_delay_us(1500);
-                        servo_delay_us(1500);
-        __delay_ms(1000);
-        
-         servo_delay_us(1750);
-                servo_delay_us(1750);
-                        servo_delay_us(1750);
-        __delay_ms(1000);       
-        
+ 
+     __delay_ms(1000);
+     posicionar_servo(_90);
+     
+     __delay_ms(1000);
+     posicionar_servo(_0);
+     
+     __delay_ms(1000);
+     posicionar_servo(_180);
+
     }
     /*
     uint16_t Encoder1 = 0;

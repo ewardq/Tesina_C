@@ -42,6 +42,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 4: 
 [p x FOSC  =  INTRC_NOCLKOUT ]
 "5
+[; ;main.c: 5: 
 [p x WDTE  =  OFF        ]
 "6
 [p x PWRTE  =  ON        ]
@@ -456,152 +457,196 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./prototipos.h: 65: }
 [e :UE 142 ]
 }
-"70
-[; ;./prototipos.h: 70:  void delay_us(unsigned microseconds){
-[v _delay_us `(v ~T0 @X0 1 ef1`ui ]
-{
-[e :U _delay_us ]
-[v _microseconds `ui ~T0 @X0 1 r1 ]
-[f ]
 "71
-[; ;./prototipos.h: 71:    while(microseconds > 0){
-[e $U 144  ]
-[e :U 145 ]
-{
+[; ;./prototipos.h: 71: const unsigned _0 = 0;
+[v __0 `Cui ~T0 @X0 1 e ]
+[i __0
+-> -> 0 `i `ui
+]
 "72
-[; ;./prototipos.h: 72:        _delay((unsigned long)((1)*(4000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+[; ;./prototipos.h: 72: const unsigned _90 = 90;
+[v __90 `Cui ~T0 @X0 1 e ]
+[i __90
+-> -> 90 `i `ui
+]
 "73
-[; ;./prototipos.h: 73:       microseconds--;
-[e -- _microseconds -> -> 1 `i `ui ]
-"74
-[; ;./prototipos.h: 74:     }
-}
-[e :U 144 ]
-"71
-[; ;./prototipos.h: 71:    while(microseconds > 0){
-[e $ > _microseconds -> -> 0 `i `ui 145  ]
-[e :U 146 ]
+[; ;./prototipos.h: 73: const unsigned _180 = 180;
+[v __180 `Cui ~T0 @X0 1 e ]
+[i __180
+-> -> 180 `i `ui
+]
 "75
-[; ;./prototipos.h: 75:  }
+[; ;./prototipos.h: 75: void posicionar_servo(unsigned degrees){
+[v _posicionar_servo `(v ~T0 @X0 1 ef1`ui ]
+{
+[e :U _posicionar_servo ]
+[v _degrees `ui ~T0 @X0 1 r1 ]
+[f ]
+"76
+[; ;./prototipos.h: 76:     for(int i = 0; i < 6; i++){
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 6 `i 144  ]
+[e $U 145  ]
+[e :U 144 ]
+{
+"77
+[; ;./prototipos.h: 77:      PORTCbits.RC0 = 1;
+[e = . . _PORTCbits 0 0 -> -> 1 `i `uc ]
+"78
+[; ;./prototipos.h: 78:         _delay((unsigned long)((1000)*(4000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+"79
+[; ;./prototipos.h: 79:         switch(degrees){
+[e $U 148  ]
+{
+"80
+[; ;./prototipos.h: 80:             case 0:
+[e :U 149 ]
+"81
+[; ;./prototipos.h: 81:              break;
+[e $U 147  ]
+"82
+[; ;./prototipos.h: 82:             case 90: _delay((unsigned long)((500)*(4000000/4000000.0)));
+[e :U 150 ]
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+"83
+[; ;./prototipos.h: 83:              break;
+[e $U 147  ]
+"84
+[; ;./prototipos.h: 84:             case 180: _delay((unsigned long)((1000)*(4000000/4000000.0)));
+[e :U 151 ]
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+"85
+[; ;./prototipos.h: 85:              break;
+[e $U 147  ]
+"86
+[; ;./prototipos.h: 86:             default: _delay((unsigned long)((500)*(4000000/4000000.0)));
+[e :U 152 ]
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+"87
+[; ;./prototipos.h: 87:         }
+}
+[e $U 147  ]
+[e :U 148 ]
+[e [\ _degrees , $ -> -> 0 `i `ui 149
+ , $ -> -> 90 `i `ui 150
+ , $ -> -> 180 `i `ui 151
+ 152 ]
+[e :U 147 ]
+"88
+[; ;./prototipos.h: 88:      PORTCbits.RC0 = 0;
+[e = . . _PORTCbits 0 0 -> -> 0 `i `uc ]
+"89
+[; ;./prototipos.h: 89:         switch(degrees){
+[e $U 154  ]
+{
+"90
+[; ;./prototipos.h: 90:             case 0: _delay((unsigned long)((1000)*(4000000/4000000.0)));
+[e :U 155 ]
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+"91
+[; ;./prototipos.h: 91:              break;
+[e $U 153  ]
+"92
+[; ;./prototipos.h: 92:             case 90: _delay((unsigned long)((500)*(4000000/4000000.0)));
+[e :U 156 ]
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+"93
+[; ;./prototipos.h: 93:              break;
+[e $U 153  ]
+"94
+[; ;./prototipos.h: 94:             case 180:
+[e :U 157 ]
+"95
+[; ;./prototipos.h: 95:              break;
+[e $U 153  ]
+"96
+[; ;./prototipos.h: 96:             default: _delay((unsigned long)((500)*(4000000/4000000.0)));
+[e :U 158 ]
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+"97
+[; ;./prototipos.h: 97:         }
+}
+[e $U 153  ]
+[e :U 154 ]
+[e [\ _degrees , $ -> -> 0 `i `ui 155
+ , $ -> -> 90 `i `ui 156
+ , $ -> -> 180 `i `ui 157
+ 158 ]
+[e :U 153 ]
+"98
+[; ;./prototipos.h: 98:         _delay((unsigned long)((18000)*(4000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 18000 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+"99
+[; ;./prototipos.h: 99:      }
+}
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 6 `i 144  ]
+[e :U 145 ]
+}
+"100
+[; ;./prototipos.h: 100: }
 [e :UE 143 ]
 }
-"77
-[; ;./prototipos.h: 77: void servo_delay_us(unsigned delay){
-[v _servo_delay_us `(v ~T0 @X0 1 ef1`ui ]
-{
-[e :U _servo_delay_us ]
-[v _delay `ui ~T0 @X0 1 r1 ]
-[f ]
-"78
-[; ;./prototipos.h: 78:     PORTCbits.RC0 = 1;
-[e = . . _PORTCbits 0 0 -> -> 1 `i `uc ]
-"79
-[; ;./prototipos.h: 79:     delay_us(delay);
-[e ( _delay_us (1 _delay ]
-"80
-[; ;./prototipos.h: 80:     PORTCbits.RC0 = 0;
-[e = . . _PORTCbits 0 0 -> -> 0 `i `uc ]
-"81
-[; ;./prototipos.h: 81:     delay_us(2000 - delay);
-[e ( _delay_us (1 - -> -> 2000 `i `ui _delay ]
-"82
-[; ;./prototipos.h: 82:     _delay((unsigned long)((18000)*(4000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 18000 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
-"83
-[; ;./prototipos.h: 83: }
-[e :UE 147 ]
-}
 [v $root$_main `(v ~T0 @X0 0 e ]
-"32 main.c
-[; ;main.c: 32: void main(void) {
+"31 main.c
+[; ;main.c: 31: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"34
-[; ;main.c: 34:     TRISA = 0b00000100;
+"33
+[; ;main.c: 33:     TRISA = 0b00000100;
 [e = _TRISA -> -> 4 `i `uc ]
-"35
-[; ;main.c: 35:     TRISB = 0b00000011;
+"34
+[; ;main.c: 34:     TRISB = 0b00000011;
 [e = _TRISB -> -> 3 `i `uc ]
-"36
-[; ;main.c: 36:     ANSEL = 0x00;
+"35
+[; ;main.c: 35:     ANSEL = 0x00;
 [e = _ANSEL -> -> 0 `i `uc ]
-"37
-[; ;main.c: 37:     TRISC = 0x00;
+"36
+[; ;main.c: 36:     TRISC = 0x00;
 [e = _TRISC -> -> 0 `i `uc ]
+"38
+[; ;main.c: 38:     direccional_apagar();
+[e ( _direccional_apagar ..  ]
 "39
-[; ;main.c: 39:     PORTCbits.RC0 = 0;
-[e = . . _PORTCbits 0 0 -> -> 0 `i `uc ]
+[; ;main.c: 39:     vehiculo_detener();
+[e ( _vehiculo_detener ..  ]
 "40
-[; ;main.c: 40:     _delay((unsigned long)((200)*(4000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
-"41
-[; ;main.c: 41:     PORTCbits.RC0 = 1;
-[e = . . _PORTCbits 0 0 -> -> 1 `i `uc ]
-"42
-[; ;main.c: 42:     _delay((unsigned long)((1000)*(4000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
-"43
-[; ;main.c: 43:     PORTCbits.RC0 = 0;
-[e = . . _PORTCbits 0 0 -> -> 0 `i `uc ]
-"44
-[; ;main.c: 44:     _delay((unsigned long)((19000)*(4000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 19000 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
-"45
-[; ;main.c: 45:             _delay((unsigned long)((1000)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"47
-[; ;main.c: 47:     while(1){
-[e :U 150 ]
+[; ;main.c: 40:     while(1){
+[e :U 161 ]
 {
+"42
+[; ;main.c: 42:      _delay((unsigned long)((1000)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"43
+[; ;main.c: 43:      posicionar_servo(_90);
+[e ( _posicionar_servo (1 __90 ]
+"45
+[; ;main.c: 45:      _delay((unsigned long)((1000)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"46
+[; ;main.c: 46:      posicionar_servo(_0);
+[e ( _posicionar_servo (1 __0 ]
 "48
-[; ;main.c: 48:         servo_delay_us(1000);
-[e ( _servo_delay_us (1 -> -> 1000 `i `ui ]
+[; ;main.c: 48:      _delay((unsigned long)((1000)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
 "49
-[; ;main.c: 49:                 servo_delay_us(1000);
-[e ( _servo_delay_us (1 -> -> 1000 `i `ui ]
-"50
-[; ;main.c: 50:                         servo_delay_us(1000);
-[e ( _servo_delay_us (1 -> -> 1000 `i `ui ]
+[; ;main.c: 49:      posicionar_servo(_180);
+[e ( _posicionar_servo (1 __180 ]
 "51
-[; ;main.c: 51:         _delay((unsigned long)((1000)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"53
-[; ;main.c: 53:         servo_delay_us(1500);
-[e ( _servo_delay_us (1 -> -> 1500 `i `ui ]
-"54
-[; ;main.c: 54:                 servo_delay_us(1500);
-[e ( _servo_delay_us (1 -> -> 1500 `i `ui ]
-"55
-[; ;main.c: 55:                         servo_delay_us(1500);
-[e ( _servo_delay_us (1 -> -> 1500 `i `ui ]
-"56
-[; ;main.c: 56:         _delay((unsigned long)((1000)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"58
-[; ;main.c: 58:          servo_delay_us(1750);
-[e ( _servo_delay_us (1 -> -> 1750 `i `ui ]
-"59
-[; ;main.c: 59:                 servo_delay_us(1750);
-[e ( _servo_delay_us (1 -> -> 1750 `i `ui ]
-"60
-[; ;main.c: 60:                         servo_delay_us(1750);
-[e ( _servo_delay_us (1 -> -> 1750 `i `ui ]
-"61
-[; ;main.c: 61:         _delay((unsigned long)((1000)*(4000000/4000.0)));
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"63
-[; ;main.c: 63:     }
+[; ;main.c: 51:     }
 }
-[e :U 149 ]
-[e $U 150  ]
-[e :U 151 ]
-"150
-[; ;main.c: 150:     return;
-[e $UE 148  ]
-"151
-[; ;main.c: 151: }
-[e :UE 148 ]
+[e :U 160 ]
+[e $U 161  ]
+[e :U 162 ]
+"138
+[; ;main.c: 138:     return;
+[e $UE 159  ]
+"139
+[; ;main.c: 139: }
+[e :UE 159 ]
 }

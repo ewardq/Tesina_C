@@ -64,23 +64,41 @@ void direccional_apagar(void){
      PORTAbits.RA1 = 0;
 }
 
-//void servo_position_deg(){
-//    
-//}
- void delay_us(unsigned microseconds){
-   while(microseconds > 0){
-       __delay_us(1);
-      microseconds--;
-    }
- }
+// ============================================================================
+// =======  Generación de PWM para servo (50Hz / 5-10% Duty Cycle)  ===========
+// ============================================================================
 
-void servo_delay_us(unsigned delay){
-    PORTCbits.RC0 = 1;
-    delay_us(delay);     //Posición neutral (90°)
-    PORTCbits.RC0 = 0;
-    delay_us(2000 - delay);
-    __delay_us(18000);
+const unsigned _0 = 0;
+const unsigned _90 = 90;
+const unsigned _180 = 180;
+
+void posicionar_servo(unsigned degrees){
+    for(int i = 0; i < 6; i++){
+     PORTCbits.RC0 = 1;
+        __delay_us(1000);
+        switch(degrees){    
+            case 0:                       //Total de 1ms
+             break;   
+            case 90:  __delay_us(500);    //Total de 1.5ms
+             break;
+            case 180: __delay_us(1000);   //Total de 2ms
+             break;
+            default:  __delay_us(500);   
+        }    
+     PORTCbits.RC0 = 0;
+        switch(degrees){    
+            case 0:    __delay_us(1000);
+             break;
+            case 90:   __delay_us(500);    
+             break;
+            case 180:
+             break;      
+            default:   __delay_us(500);    //Posición neutral (90°)
+        }
+        __delay_us(18000);
+     }
 }
+// ============================================================================
 
 #endif	/* XC_HEADER_TEMPLATE_H */
 
