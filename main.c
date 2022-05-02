@@ -26,88 +26,48 @@
 #include "prototipos.h"
 
 
-
-
 void main(void) {
     //Configurando puertos
     TRISA = 0b00000100; 
     TRISB = 0b00000011;
     ANSEL = 0x00;
     TRISC = 0x00;
+    
+    T1CON = 0x10;               // Activar Timer1
+    PORTBbits.RB7 = 0;          // Apagar LED 
+    
+    uint16_t Encoder1 = 0;      // Contador para Encoder derecho
+    uint16_t Encoder2 = 0;      // Contador para Encoder derecho
         
-    direccional_apagar();
-    vehiculo_detener();
+    direccional(APAGAR);
+    vehiculo(DETENER);
+    
+    probar_motores_mov();
+    probar_servomotor();
+
     while(1){
- 
-     __delay_ms(1000);
-     posicionar_servo(_90);
-     
-     __delay_ms(1000);
-     posicionar_servo(_0);
-     
-     __delay_ms(1000);
-     posicionar_servo(_180);
 
     }
+    
     /*
-    uint16_t Encoder1 = 0;
-    uint16_t Encoder2 = 0;
+    unsigned aux = get_distancia_ultrasonico();
+        if ((aux < 10) & (aux != 0)){
+            PORTBbits.RB7 = 1;
+            __delay_ms(500);
+        }
+        else{
+            PORTBbits.RB7 = 0;
+        }
+    */
     
-    T1CON = 0x10;               //Initialize Timer Module
-    int a;
-    
+    /*
+
+   
     bool E1; 
     bool E1_old;
     bool E2; 
     bool E2_old;
-   //Probar los modos de movimiento
-          PORTBbits.RB7 = 0;
-        vehiculo_atras();
-        __delay_ms(1000);
-        vehiculo_derecha();
-                direccional(1);
-        __delay_ms(1000);
-        vehiculo_izquierda();
-                direccional(0);
-        __delay_ms(1000);
-        vehiculo_detener();
-       __delay_ms(1000);
-        vehiculo_adelante();
-        direccional_apagar();
 
-    while(1){
-    vehiculo_adelante();
-    TMR1H = 0;                //Sets the Initial Value of Timer
-    TMR1L = 0;                //Sets the Initial Value of Timer
-
-    RA3 = 1;                  //TRIGGER HIGH
-    __delay_us(10);           //10uS Delay 
-    RA3 = 0;                  //TRIGGER LOW
-
-    while(!RA2);              //Waiting for Echo
-    TMR1ON = 1;               //Timer Starts
-    while(RA2);               //Waiting for Echo goes LOW
-    TMR1ON = 0;               //Timer Stops
-
-    a = (TMR1L | (TMR1H<<8)); //Reads Timer Value
-    a = a/29.41;              //Converts Time to Distance
-    a = a + 1;                //Distance Calibration
-    if(a>=2 && a<=400) {//Check whether the result is valid or not
-         if(a < 10){
-              vehiculo_detener();
-              __delay_ms(500);
-              vehiculo_atras();
-              __delay_ms(2000);
-              vehiculo_derecha();
-              direccional(1);
-              __delay_ms(200);
-              direccional_apagar();
-              __delay_ms(1000);
-              vehiculo_adelante();
-         }
-    }       
-    }
-           */
         /*
     do{
         E1 = PORTBbits.RB1;

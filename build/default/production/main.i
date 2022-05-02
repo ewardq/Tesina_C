@@ -2534,71 +2534,80 @@ extern __bank0 __bit __timeout;
 # 25 "main.c" 2
 
 # 1 "./prototipos.h" 1
+# 18 "./prototipos.h"
+void vehiculo(unsigned op){
+    if (op & 0b00001){
+        PORTAbits.RA7 = 0;
+        PORTCbits.RC1 = 0;
 
+        PORTAbits.RA6 = 0;
+        PORTCbits.RC2 = 0;
+    }
+    if (op & 0b00010){
+        PORTAbits.RA7 = 1;
+        PORTCbits.RC1 = 0;
 
+        PORTAbits.RA6 = 0;
+        PORTCbits.RC2 = 0;
+    }
+    if (op & 0b00100){
+        PORTAbits.RA7 = 0;
+        PORTCbits.RC1 = 0;
 
+        PORTAbits.RA6 = 1;
+        PORTCbits.RC2 = 0;
+    }
+    if (op & 0b01000){
+        PORTAbits.RA7 = 1;
+        PORTCbits.RC1 = 0;
 
+        PORTAbits.RA6 = 1;
+        PORTCbits.RC2 = 0;
+    }
+    if (op & 0b10000){
+        PORTAbits.RA7 = 0;
+        PORTCbits.RC1 = 1;
 
-
-
-
-void setup(void);
-
-void vehiculo_adelante(void) {
-    PORTAbits.RA7 = 1;
-    PORTCbits.RC1 = 0;
-
-    PORTAbits.RA6 = 1;
-    PORTCbits.RC2 = 0;
-}
-
-void vehiculo_derecha(void) {
-    PORTAbits.RA7 = 1;
-    PORTCbits.RC1 = 0;
-
-    PORTAbits.RA6 = 0;
-    PORTCbits.RC2 = 0;
-}
-
-void vehiculo_izquierda(void) {
-    PORTAbits.RA7 = 0;
-    PORTCbits.RC1 = 0;
-
-    PORTAbits.RA6 = 1;
-    PORTCbits.RC2 = 0;
-}
-
-void vehiculo_atras(void) {
-    PORTAbits.RA7 = 0;
-    PORTCbits.RC1 = 1;
-
-    PORTAbits.RA6 = 0;
-    PORTCbits.RC2 = 1;
-}
-
-void vehiculo_detener(void) {
-    PORTAbits.RA7 = 0;
-    PORTCbits.RC1 = 0;
-
-    PORTAbits.RA6 = 0;
-    PORTCbits.RC2 = 0;
+        PORTAbits.RA6 = 0;
+        PORTCbits.RC2 = 1;
+    }
 }
 
 void direccional(unsigned op){
-    if (op == 1){
+    if (op & 0b00010){
         PORTAbits.RA0 = 1;
         PORTAbits.RA1 = 0;
     }
-    else{
+    if (op & 0b00100){
         PORTAbits.RA0 = 0;
         PORTAbits.RA1 = 1;
     }
+    if (op & 0b00001){
+        PORTAbits.RA0 = 0;
+        PORTAbits.RA1 = 0;
+    }
 }
 
-void direccional_apagar(void){
-     PORTAbits.RA0 = 0;
-     PORTAbits.RA1 = 0;
+
+
+void probar_motores_mov(){
+
+    vehiculo(0b10000);
+    _delay((unsigned long)((1000)*(4000000/4000.0)));
+
+    vehiculo(0b00010);
+    direccional(0b00010);
+    _delay((unsigned long)((1000)*(4000000/4000.0)));
+
+    vehiculo(0b00100);
+    direccional(0b00100);
+    _delay((unsigned long)((1000)*(4000000/4000.0)));
+
+    vehiculo(0b00001);
+    direccional(0b00001);
+    _delay((unsigned long)((1000)*(4000000/4000.0)));
 }
+
 
 
 
@@ -2634,9 +2643,50 @@ void posicionar_servo(unsigned degrees){
         _delay((unsigned long)((18000)*(4000000/4000000.0)));
      }
 }
+
+
+
+void probar_servomotor(){
+    _delay((unsigned long)((1000)*(4000000/4000.0)));
+     posicionar_servo(_0);
+
+     _delay((unsigned long)((1000)*(4000000/4000.0)));
+     posicionar_servo(_90);
+
+     _delay((unsigned long)((1000)*(4000000/4000.0)));
+     posicionar_servo(_180);
+
+    _delay((unsigned long)((1000)*(4000000/4000.0)));
+     posicionar_servo(_90);
+}
+
+
+
+
+
+unsigned int get_distancia_ultrasonico(){
+    unsigned temp;
+    TMR1H = 0;
+    TMR1L = 0;
+
+    RA3 = 1;
+    _delay((unsigned long)((10)*(4000000/4000000.0)));
+    RA3 = 0;
+
+    while(!RA2);
+    TMR1ON = 1;
+    while(RA2);
+    TMR1ON = 0;
+
+    temp = (TMR1L | (TMR1H<<8));
+    temp = temp/29.41;
+    temp = temp + 1;
+    if(temp>=2 && temp<=400) {
+        return temp;
+     }
+    else return 0;
+}
 # 26 "main.c" 2
-
-
 
 
 
@@ -2647,20 +2697,21 @@ void main(void) {
     ANSEL = 0x00;
     TRISC = 0x00;
 
-    direccional_apagar();
-    vehiculo_detener();
+    T1CON = 0x10;
+    PORTBbits.RB7 = 0;
+
+    uint16_t Encoder1 = 0;
+    uint16_t Encoder2 = 0;
+
+    direccional(0b00001);
+    vehiculo(0b00001);
+
+    probar_motores_mov();
+    probar_servomotor();
+
     while(1){
 
-     _delay((unsigned long)((1000)*(4000000/4000.0)));
-     posicionar_servo(_90);
-
-     _delay((unsigned long)((1000)*(4000000/4000.0)));
-     posicionar_servo(_0);
-
-     _delay((unsigned long)((1000)*(4000000/4000.0)));
-     posicionar_servo(_180);
-
     }
-# 138 "main.c"
+# 98 "main.c"
     return;
 }
