@@ -207,5 +207,72 @@ unsigned int get_distancia_ultrasonico(){
 */
 // ============================================================================
 
-#endif	/* XC_HEADER_TEMPLATE_H */
+// ____________________________________________________________________________
+// =================  Comunicación UART   =================
+// ============================================================================
+//Configurando la transmisión EUSART
+#define _TXEN  1   //Activa EUSART
+#define _SYNC  0   //Comunicación asíncrona
+#define _SPEN  1  // Configura TX como salida digital
+#define _BRGH  0  //Activar sólo si se utiliza frecuencia de procesador de más de 4MHz
+#define _BRG16 1  // Activar para enviar un dato de 16 bits, por default envía uno de 8bits
 
+
+ //  SET_BAUDRATE(9600);
+void SET_BAUDRATE(int br){
+   uint16_t Set_BaudRate;
+   Set_BaudRate = (_XTAL_FREQ / (16*br)) - 1;
+   SPBRG = Set_BaudRate & (MASK(4) | MASK(3) | MASK(2) | MASK(1) | MASK(0));
+   SPBRGH = Set_BaudRate & (MASK(9) | MASK(8) | MASK(7) | MASK(6) | MASK(5));
+}
+// ============================================================================
+
+// ____________________________________________________________________________
+// =================  Comunicación I2C   =================
+// ============================================================================
+void I2C_Master_Init(const unsigned long c){
+  SSPCON = 0b00101000;
+  SSPCON2 = 0;
+  SSPADD = (_XTAL_FREQ/(4*c))-1;
+  SSPSTAT = 0;
+  TRISC3 = 1;        //Setting as input as given in datasheet
+  TRISC4 = 1;        //Setting as input as given in datasheet
+}
+
+void I2C_Master_Wait(){
+  while ((SSPSTAT & 0x04) || (SSPCON2 & 0x1F));
+}
+
+void I2C_Master_Start(){
+  I2C_Master_Wait();
+  SEN = 1;
+}
+
+void I2C_Master_RepeatedStart(){
+  I2C_Master_Wait();
+  RSEN = 1;
+}
+
+void I2C_Master_Stop(){
+  I2C_Master_Wait();
+  PEN = 1;
+}
+
+void I2C_Master_Write(unsigned d){
+  I2C_Master_Wait();
+  SSPBUF = d;
+}
+
+unsigned short I2C_Master_Read(unsigned short a){
+  unsigned short temp;
+  I2C_Master_Wait();
+  RCEN = 1;
+  I2C_Master_Wait();
+  temp = SSPBUF;
+  I2C_Master_Wait();
+  ACKDT = (a)?0:1;
+  ACKEN = 1;
+  return temp;
+}
+// ============================================================================
+#endif	/* XC_HEADER_TEMPLATE_H */

@@ -20,10 +20,14 @@
 // Use project enums instead of #define for ON and OFF.
 #define _XTAL_FREQ 4000000
 
+//Macros
+#define MASK(x) ((unsigned char)(1<<x))
 
 #include <xc.h>
+#include <pic16f886.h>
 #include <stdbool.h>
 #include "prototipos.h"
+
 
 
 void main(void) {
@@ -44,9 +48,22 @@ void main(void) {
     
     probar_motores_mov();
     probar_servomotor();
-
+    
+    unsigned x1 = 0xff;
+    unsigned x2 = 0x00;
+    
     while(1){
-
+        I2C_Master_Start();
+        I2C_Master_Write(0x30);
+        I2C_Master_Write(x1);
+        I2C_Master_Stop();
+        __delay_ms(500);
+   
+        I2C_Master_Start();
+        I2C_Master_Write(0x30);
+        I2C_Master_Write(x2);
+        I2C_Master_Stop();
+        __delay_ms(500);
     }
     
     /*
@@ -61,3 +78,6 @@ void main(void) {
     */
     return;
 }
+
+
+

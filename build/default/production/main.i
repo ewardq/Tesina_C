@@ -24,13 +24,7 @@
 
 #pragma config BOR4V = BOR40V
 #pragma config WRT = OFF
-
-
-
-
-
-
-
+# 26 "main.c"
 # 1 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2528,10 +2522,11 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 29 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\xc.h" 2 3
-# 24 "main.c" 2
+# 26 "main.c" 2
+
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.36\\pic\\include\\c90\\stdbool.h" 1 3
-# 25 "main.c" 2
+# 28 "main.c" 2
 
 # 1 "./prototipos.h" 1
 # 18 "./prototipos.h"
@@ -2686,7 +2681,64 @@ unsigned int get_distancia_ultrasonico(){
      }
     else return 0;
 }
-# 26 "main.c" 2
+# 222 "./prototipos.h"
+void SET_BAUDRATE(int br){
+   uint16_t Set_BaudRate;
+   Set_BaudRate = (4000000 / (16*br)) - 1;
+   SPBRG = Set_BaudRate & (((unsigned char)(1<<4)) | ((unsigned char)(1<<3)) | ((unsigned char)(1<<2)) | ((unsigned char)(1<<1)) | ((unsigned char)(1<<0)));
+   SPBRGH = Set_BaudRate & (((unsigned char)(1<<9)) | ((unsigned char)(1<<8)) | ((unsigned char)(1<<7)) | ((unsigned char)(1<<6)) | ((unsigned char)(1<<5)));
+}
+
+
+
+
+
+void I2C_Master_Init(const unsigned long c){
+  SSPCON = 0b00101000;
+  SSPCON2 = 0;
+  SSPADD = (4000000/(4*c))-1;
+  SSPSTAT = 0;
+  TRISC3 = 1;
+  TRISC4 = 1;
+}
+
+void I2C_Master_Wait(){
+  while ((SSPSTAT & 0x04) || (SSPCON2 & 0x1F));
+}
+
+void I2C_Master_Start(){
+  I2C_Master_Wait();
+  SEN = 1;
+}
+
+void I2C_Master_RepeatedStart(){
+  I2C_Master_Wait();
+  RSEN = 1;
+}
+
+void I2C_Master_Stop(){
+  I2C_Master_Wait();
+  PEN = 1;
+}
+
+void I2C_Master_Write(unsigned d){
+  I2C_Master_Wait();
+  SSPBUF = d;
+}
+
+unsigned short I2C_Master_Read(unsigned short a){
+  unsigned short temp;
+  I2C_Master_Wait();
+  RCEN = 1;
+  I2C_Master_Wait();
+  temp = SSPBUF;
+  I2C_Master_Wait();
+  ACKDT = (a)?0:1;
+  ACKEN = 1;
+  return temp;
+}
+# 29 "main.c" 2
+
 
 
 
@@ -2709,9 +2761,22 @@ void main(void) {
     probar_motores_mov();
     probar_servomotor();
 
-    while(1){
+    unsigned x1 = 0xff;
+    unsigned x2 = 0x00;
 
+    while(1){
+        I2C_Master_Start();
+        I2C_Master_Write(0x30);
+        I2C_Master_Write(x1);
+        I2C_Master_Stop();
+        _delay((unsigned long)((1000)*(4000000/4000.0)));
+
+        I2C_Master_Start();
+        I2C_Master_Write(0x30);
+        I2C_Master_Write(x2);
+        I2C_Master_Stop();
+        _delay((unsigned long)((1000)*(4000000/4000.0)));
     }
-# 62 "main.c"
+# 79 "main.c"
     return;
 }
