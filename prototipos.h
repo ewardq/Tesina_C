@@ -68,7 +68,7 @@ void direccional(unsigned op){
     }
 }
 
-//  >>>>>>>>>>>>>>>>>>>> Función de prueba <<<<<<<<<<<<<<<<<<<<<<<<<< 
+//  >>>>>>>>>>>>>>>>>>>> FunciÃ³n de prueba <<<<<<<<<<<<<<<<<<<<<<<<<< 
 //                      <<    Motores    >>
 void probar_motores_mov(){
     //Probar los modos de movimiento
@@ -90,7 +90,7 @@ void probar_motores_mov(){
 // ============================================================================
 
 // ____________________________________________________________________________
-// =======  Generación de PWM para servo (50Hz / 5-10% Duty Cycle)  ===========
+// =======  GeneraciÃ³n de PWM para servo (50Hz / 5-10% Duty Cycle)  ===========
 // ============================================================================
 
 const unsigned _0 = 0;
@@ -118,13 +118,13 @@ void posicionar_servo(unsigned degrees){
              break;
             case 180:
              break;      
-            default:   __delay_us(500);    //Posición neutral (90°)
+            default:   __delay_us(500);    //PosiciÃ³n neutral (90Â°)
         }
         __delay_us(18000);
      }
 }
 
-//  >>>>>>>>>>>>>>>>>>>> Función de prueba <<<<<<<<<<<<<<<<<<<<<<<<<< 
+//  >>>>>>>>>>>>>>>>>>>> FunciÃ³n de prueba <<<<<<<<<<<<<<<<<<<<<<<<<< 
 //                     <<   Servomotor   >>
 void probar_servomotor(){
     __delay_ms(1000);
@@ -142,7 +142,7 @@ void probar_servomotor(){
 // ============================================================================
 
 // ____________________________________________________________________________
-// =======  Generación de PWM para servo (50Hz / 5-10% Duty Cycle)  ===========
+// =======  Obtener distancia de sensor ultrasonico hc-sr04  ===========
 // ============================================================================
 unsigned int get_distancia_ultrasonico(){
     unsigned temp;
@@ -208,14 +208,14 @@ unsigned int get_distancia_ultrasonico(){
 // ============================================================================
 
 // ____________________________________________________________________________
-// =================  Comunicación UART   =================
+// =================  ComunicaciÃ³n UART   =================
 // ============================================================================
-//Configurando la transmisión EUSART
+//Configurando la transmisiÃ³n EUSART
 #define _TXEN  1   //Activa EUSART
-#define _SYNC  0   //Comunicación asíncrona
+#define _SYNC  0   //ComunicaciÃ³n asÃ­ncrona
 #define _SPEN  1  // Configura TX como salida digital
-#define _BRGH  0  //Activar sólo si se utiliza frecuencia de procesador de más de 4MHz
-#define _BRG16 1  // Activar para enviar un dato de 16 bits, por default envía uno de 8bits
+#define _BRGH  0  //Activar sÃ³lo si se utiliza frecuencia de procesador de mÃ¡s de 4MHz
+#define _BRG16 1  // Activar para enviar un dato de 16 bits, por default envÃ­a uno de 8bits
 
 
  //  SET_BAUDRATE(9600);
@@ -228,7 +228,7 @@ void SET_BAUDRATE(int br){
 // ============================================================================
 
 // ____________________________________________________________________________
-// =================  Comunicación I2C   =================
+// =================  ComunicaciÃ³n I2C   =================
 // ============================================================================
 void I2C_Master_Init(const unsigned long c){
   SSPCON = 0b00101000;
