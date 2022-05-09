@@ -10,3 +10,6 @@ Se creó una librería (8XC) que permite usar:
 - Transmisor y receptor RF433 Mhz, haciendo uso de la transmisión EUSART del uC
 - Tres puentes H, dos para las ruedas traseras (tracción) y uno para el direccionamiento de las delanteras
 - Lectura de dos *quadrature encoders* (se duplicó su resolución en hardware a cambio de no poder saber en qué dirección giran las ruedas)
+
+## Hardware
+![Esquematico-1](https://user-images.githubusercontent.com/72580785/167339715-a51acf8f-584f-4c0b-9230-e884501456bf.jpg)
